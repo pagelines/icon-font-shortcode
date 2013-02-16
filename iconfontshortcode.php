@@ -40,7 +40,7 @@ class PL_Icon_Font_Shortcode {
 	}
 
 	function get_less($less){
-		$less .= pl_file_get_contents( $this->base_dir.'/iconfontshortcode.min.less' );
+		$less .= pl_file_get_contents( $this->base_dir.'/iconfontshortcode.less' );
 		return $less;
 	}
 

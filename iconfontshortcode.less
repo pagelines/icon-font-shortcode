@@ -1,3 +1,6 @@
+@firered: #FF1A0A;
+@fireorange: #FF954F;
+
 /*
 *
 * LESS colors -> not supported by 'color' shortcode attribute
@@ -111,8 +114,9 @@ span.highlight {
 
 
 /* Custom */
-/* red to orange gradient with orange fallback for old browsers */span.bgfire {
-	#gradient > .vertical(#FF954F, #FF1A0A);
+/* red to orange gradient with orange fallback for old browsers */
+span.bgfire {
+	#gradient > .vertical(@fireorange,@firered);
 	} /* end of bgfire */
 
 
