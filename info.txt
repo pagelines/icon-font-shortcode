@@ -1,0 +1,12 @@
+== Description ==
+
+Allows you to use a shortcode instead of HTML code to output an icon font, specifically for Font Awesome. Example usage: [i]icon-bolt icon-4x icon-spin icon-border pull-right[/i]
+
+* Requires both opening [i] and closing [/i]
+
+See <a href="http://www.pagelinestheme.com/icon-font-shortcode?ref=plstore" target="_blank">Plugin's Official Page</a> for all details.
+
+== Changelog ==
+
+== 1.0.2013.02.14.00 ==
+* Initial release

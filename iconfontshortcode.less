@@ -1,0 +1,157 @@
+/*
+*
+* LESS colors -> not supported by 'color' shortcode attribute
+*
+*/
+span.darkbase {
+	color: @dark-base;
+	}
+span.light-base {
+	color: @light-base;
+	}
+/* could add more */
+
+
+
+/*
+*
+* opacity
+*
+*/
+span.opnone {
+	.opacity(0); /* could also use color="transparent" within the shortcode */
+	}
+span.opsome {
+	.opacity(25);
+	}
+span.ophalf {
+	.opacity(50);
+	}
+span.opmost {
+	.opacity(75);
+	}
+
+/*
+*
+* backgrounds
+*
+*/
+
+span.rounded{
+	.border-radius(.1em);
+	}
+span.roundedmore{
+	.border-radius(.5em);
+	}
+span.roundedlots{
+	.border-radius(1em);
+	}
+
+
+span.bgblack {
+	background: rgb(0,0,0);
+	}
+span.bgwhite {
+	background: rgb(255,255,255);
+	}
+span.bggray, span.bggrey {
+	background: rgb(128,128,128);
+	}
+span.bglime {
+	background: rgb(0,255,0);
+	}
+span.bgmaroon {
+	background: rgb(128,0,0);
+	}
+span.bgnavy {
+	background: rgb(0,0,128);
+	}
+span.bgaqua {
+	background: rgb(0,255,255);
+	}
+
+
+span.bgorange {
+	background: rgb(255,165,0);
+	}
+
+
+span.bgdeeppink {
+	background: rgb(255,20,147);
+	}
+span.bgdeepskyblue {
+	background: rgb(0,191,255);
+	}
+span.bgmidnightblue {
+	background: rgb(25,25,112);
+	}
+span.bgslategray, span.bgslategrey {
+	background: rgb(112,128,144);
+	}
+span.bgsnow {
+	background: rgb(255,250,250);
+	}
+span.bgtomato {
+	background: rgb(255,99,71);
+	}
+span.bgwhitesmoke {
+	background: rgb(245,245,245);
+	}
+span.bgyellowgreen {
+	background: rgb(154,205,50);
+	}
+
+
+
+/* Bootstrap's */
+span.highlight {
+	.highlightMe();
+	}
+/* could add some of the relative color references */
+
+
+/* Custom */
+/* red to orange gradient with orange fallback for old browsers */span.bgfire {
+	#gradient > .vertical(#FF954F, #FF1A0A);
+	} /* end of bgfire */
+
+
+
+/*
+*
+* shadows
+*
+*/
+
+/* box-shadow --> only useful if you also have a background
+	--> and actually doesn't seem to work at all... gets crossed out in Web Inspector
+CSS syntax --> box-shadow: h-shadow v-shadow blur spread color inset;
+LESSified below
+*/
+span.shadow {
+	.box-shadow(.1em);
+	}
+span.shadowmore {
+	.box-shadow(.5em);
+	}
+span.shadowlots {
+	.box-shadow(1em);
+	}
+span.shadowhuge {
+	.box-shadow(3em);
+	}
+
+
+/* Syntax --> text-shadow: h-shadow v-shadow blur color; */
+span.textshadow {
+	text-shadow: .1em .1em .1em @light-base;
+	}
+span.textshadowmore {
+	text-shadow: .2em .2em .2em @light-base;
+	}
+span.textshadowlots {
+	text-shadow: .3em .3em .3em @light-base;
+	}
+span.textshadowhuge {
+	text-shadow: .5em .5em .5em @light-base;
+	}
