@@ -8,5 +8,9 @@ See <a href="http://www.pagelinestheme.com/icon-font-shortcode?ref=plstore" targ
 
 == Changelog ==
 
+== 1.0.2013.02.17.00 ==
+* Added more built-in stylings: inverse coloring, outlining (only works on webkit browsers), and glossy effect
+== 1.0.2013.02.16.00 ==
+* Deleted minified LESS file since LESS minifies anyways and because minified LESS didn't allow the LESS gradient mixin to work (maybe because of the minifyer that I used, who cares, deleted). Updated PHP file to reference .less instead of .min.less.
 == 1.0.2013.02.14.00 ==
 * Initial release
