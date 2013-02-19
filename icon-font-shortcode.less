@@ -7,6 +7,25 @@ http://phpxref.pagelines.com/nav.html?less/mixins.less.source.html
 @firered: #FF1A0A;
 @fireorange: #FF954F;
 
+
+
+/*
+*
+* Links --> coloring for both a and a:hover get overridden by shortcode's color attribute, if used. User could choose to override with child theme or Custom Code if desired.
+*
+*/
+a.iconfont,
+a.iconfont:link,
+a.iconfont:visited {
+	color: @pl-text;
+	text-decoration: none;
+}
+a.iconfont:hover {
+	color: @pl-link;
+	text-decoration: none;
+}
+
+
 /*
 *
 * LESS colors -> not supported by 'color' shortcode attribute

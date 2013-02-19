@@ -3,7 +3,7 @@
 Plugin Name: Icon Font Shortcode
 Plugin URI: http://pagelinestheme.com/icon-font-shortcode
 Description: Allows you to use a shortcode instead of HTML code to output an icon font, specifically for Font Awesome. Example usage: [i]icon-bolt icon-4x icon-spin icon-border pull-right[/i]. See <a href="http://fortawesome.github.com/Font-Awesome/#examples" target="_blank">Font Awesome Examples</a>. If you don't have Font Awesome but do have Bootstrap Icons, you can still use the shortcode but reference <a href="http://twitter.github.com/bootstrap/base-css.html#icons" target="_blank">Bootstrap Icon Glyphs</a> (scroll down to the "How to use" section) for more information.
-Version: 1.0.2013.02.17.00
+Version: 1.0.2013.02.19.00
 Author: Clifford Paulick
 Author URI: http://tourkick.com/
 Pagelines: true
@@ -69,7 +69,9 @@ class PL_Icon_Font_Shortcode {
 				'color' => '', // e.g. #00ff00, white, rgba(255, 0, 0, 0.5), etc. -- https://developer.mozilla.org/en-US/docs/CSS/color -- predefined color names: https://developer.mozilla.org/en-US/docs/CSS/color_value#Color_keywords
 				'fontsize' => '', // e.g. 250%, 1.6em, 30px, small, larger, xx-large, x-small, etc. -- https://developer.mozilla.org/en-US/docs/CSS/font-size
 				'spanid' => '',
-				'spanclass' => ''
+				'spanclass' => '',
+				'link' => '',
+				'target' => ''
 			), $atts)
 		  );
 
@@ -84,21 +86,43 @@ class PL_Icon_Font_Shortcode {
 			$spanclass = $iconfontclasses;
 		}
 	$thespanclass = esc_html( $spanclass );
+	$thelink = esc_html( $link );
+	$thelinktarget = esc_html( $target );
 
+	// used empty ( http://php.net/manual/en/function.empty.php -- http://www.zachstronaut.com/posts/2009/02/09/careful-with-php-empty.html ) because zero is not a valid value
 
 if(empty($thespanclass)){
 	return ; // I think WordPress does this for us anyways, but let's just make sure.
 }
-	// used empty ( http://php.net/manual/en/function.empty.php -- http://www.zachstronaut.com/posts/2009/02/09/careful-with-php-empty.html ) because zero is not a valid value
 
-	// part 1
+if(empty($thelink)) {
+	$linkcodebefore = '';
+	$linkcodeafter = '';
+} elseif(empty($thelinktarget)){
+	$linkcodebefore = '<a class="iconfont" href="' . $thelink . '">';
+	$linkcodeafter = '</a>';
+} else {
+	$linkcodebefore = '<a class="iconfont" href="' . $thelink . '" target="_' . $thelinktarget . '">';
+}
+
+/*
+	// if I wanted to add a span id to all shortcodes
+	// $x
+	if(!empty($thespanid)){
+		$x = 'id="iconfont ' . $thespanid . '" class="' . $thespanclass . '"';
+	} else {
+		$x = 'id="iconfont" class="' . $thespanclass . '"';
+	}
+*/
+
+	// $x
 	if(!empty($thespanid)){
 		$x = 'id="' . $thespanid . '" class="' . $thespanclass . '"';
 	} else {
 		$x = 'class="' . $thespanclass . '"';
 	}
 
-	// part 2
+	// $y
 	if(!empty($thecolor) && !empty($thefontsize)){
 		$y = ' style="color:' . $thecolor . '; font-size:' . $thefontsize . ';"';
 	} elseif(!empty($thecolor) && empty($thefontsize)){
@@ -116,9 +140,15 @@ References:
 	http://www.screenreader.net/ ( http://vimeo.com/36137650 )
 	https://chrome.google.com/webstore/detail/chromevox/kgejglhpjiefppelpmljglcjbhoiplfn
 */
-	// final result
-	return '<span ' .$x . $y . ' aria-hidden="true"></span>';
+	// $z
+	if(empty($linkcodebefore)){
+		$z = '<span ' .$x . $y . ' aria-hidden="true"></span>';
+	} else {
+		$z = $linkcodebefore . '<span ' .$x . $y . ' aria-hidden="true"></span>' . $linkcodeafter;
+	}
 
+// final result
+return $z;
 
 } // end of shortcode
 

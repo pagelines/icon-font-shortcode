@@ -8,6 +8,8 @@ See <a href="http://www.pagelinestheme.com/icon-font-shortcode?ref=plstore" targ
 
 == Changelog ==
 
+== 1.0.2013.02.19.00 ==
+* Added 'link' and 'target' shortcode attributes to allow an icon to be a link.
 == 1.0.2013.02.17.00 ==
 * Added more built-in stylings: inverse coloring, outlining (only works on webkit browsers), and glossy effect
 == 1.0.2013.02.16.00 ==
