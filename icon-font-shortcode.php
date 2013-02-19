@@ -76,58 +76,48 @@ class PL_Icon_Font_Shortcode {
 	// sanitization reference: http://wp.tutsplus.com/tutorials/creative-coding/data-sanitization-and-validation-with-wordpress/
 	$thecolor = esc_html( $color );
 	$thefontsize = esc_html( $fontsize );
-	$theiconfontclasses = esc_html( $iconfontclasses );
+	// $theiconfontclasses = esc_html( $iconfontclasses );
 	$thespanid = esc_html( $spanid );
+		if (!empty($spanclass)) {
+			$spanclass = $spanclass . ' ' . $iconfontclasses;
+		} else {
+			$spanclass = $iconfontclasses;
+		}
 	$thespanclass = esc_html( $spanclass );
 
-	// create the icon HTML code
-	$theiconcode = '<i class="' . $theiconfontclasses . '"></i>';
 
+if(empty($thespanclass)){
+	return ; // I think WordPress does this for us anyways, but let's just make sure.
+}
 	// used empty ( http://php.net/manual/en/function.empty.php -- http://www.zachstronaut.com/posts/2009/02/09/careful-with-php-empty.html ) because zero is not a valid value
 
-	// step 1
-	if(!empty($thespanid) && !empty($thespanclass)){
-		$x = '<span id="' . $thespanid . '" class="' . $thespanclass . '"';
-	} elseif(!empty($thespanid) && empty($thespanclass)){
-		$x = '<span id="' . $thespanid . '"';
-	} elseif(empty($thespanid) && !empty($thespanclass)){
-		$x = '<span class="' . $thespanclass . '"';
+	// part 1
+	if(!empty($thespanid)){
+		$x = 'id="' . $thespanid . '" class="' . $thespanclass . '"';
 	} else {
-		$x = '';
+		$x = 'class="' . $thespanclass . '"';
 	}
 
-	// step 2
-	if (empty($x)){
-		if(!empty($thecolor) && !empty($thefontsize)){
-			$y = '<span style="color:' . $thecolor . '; font-size:' . $thefontsize . ';">';
-		} elseif(!empty($thecolor) && empty($thefontsize)){
-			$y = '<span style="color:' . $thecolor . ';">';
-		} elseif(empty($thecolor) && !empty($thefontsize)){
-			$y = '<span style="font-size:' . $thefontsize . ';">';
-		} else {
-			$y = '';
-		}
+	// part 2
+	if(!empty($thecolor) && !empty($thefontsize)){
+		$y = ' style="color:' . $thecolor . '; font-size:' . $thefontsize . ';"';
+	} elseif(!empty($thecolor) && empty($thefontsize)){
+		$y = ' style="color:' . $thecolor . ';"';
+	} elseif(empty($thecolor) && !empty($thefontsize)){
+		$y = ' style="font-size:' . $thefontsize . ';"';
 	} else {
-		if(!empty($thecolor) && !empty($thefontsize)){
-			$y = ' style="color:' . $thecolor . '; font-size:' . $thefontsize . ';">';
-		} elseif(!empty($thecolor) && empty($thefontsize)){
-			$y = ' style="color:' . $thecolor . ';">';
-		} elseif(empty($thecolor) && !empty($thefontsize)){
-			$y = ' style="font-size:' . $thefontsize . ';">';
-		} else {
-			$y = '>';
-		}
+		$y = '';
 	}
 
-	// step 3
-	if(empty($x) && empty($y)){
-		$z = $theiconcode;
-	} else {
-		$z = $x . $y . $theiconcode . '</span>';
-	}
-
-	// just do it
-	return $z;
+/* aria-hidden="true"
+References:
+	http://css-tricks.com/examples/PseudoIconTest/
+	http://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden
+	http://www.screenreader.net/ ( http://vimeo.com/36137650 )
+	https://chrome.google.com/webstore/detail/chromevox/kgejglhpjiefppelpmljglcjbhoiplfn
+*/
+	// final result
+	return '<span ' .$x . $y . ' aria-hidden="true"></span>';
 
 
 } // end of shortcode
