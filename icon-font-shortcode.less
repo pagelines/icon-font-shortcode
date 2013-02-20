@@ -4,8 +4,6 @@ and
 http://phpxref.pagelines.com/nav.html?less/mixins.less.source.html
 */
 
-@firered: #FF1A0A;
-@fireorange: #FF954F;
 
 
 /*
@@ -74,13 +72,13 @@ span.opmost {
 
 
 /* NEEDS to be used in conjuction with another background property. */
-span.rounded{
+span.rounded {
 	.border-radius(.1em);
 	}
-span.roundedmore{
+span.roundedmore {
 	.border-radius(.5em);
 	}
-span.roundedlots{
+span.roundedlots {
 	.border-radius(1em);
 	}
 
@@ -163,6 +161,8 @@ span.highlight {
 
 
 /* Custom */
+@firered: #FF1A0A;
+@fireorange: #FF954F;
 span.bgfire {
 	background: @fireorange;
 	#gradient > .vertical(@fireorange,@firered);
@@ -191,10 +191,10 @@ span.bgrainbow {
 */
 
 /* box-shadow --> only useful if you also have a background
-	--> and actually doesn't seem to work at all... gets crossed out in Web Inspector
-CSS syntax --> box-shadow: h-shadow v-shadow blur spread color inset;
-LESSified below
+* CSS syntax --> box-shadow: h-shadow v-shadow blur spread color inset;
+* LESSified below
 */
+/* Does not work on pseudo elements - http://stackoverflow.com/a/6969220
 span.shadow {
 	.box-shadow(.1em);
 	}
@@ -207,6 +207,7 @@ span.shadowlots {
 span.shadowhuge {
 	.box-shadow(3em);
 	}
+*/
 
 
 /* Syntax --> text-shadow: h-shadow v-shadow blur color; */
@@ -234,8 +235,19 @@ span.textshadowhuge {
 span.outline,
 span.outline1,
 span.outlineone {
+	/* for non-webkit -- limited to only 1px per http://css-tricks.com/adding-stroke-to-web-text/ */
+	color: @pl-base;
+	text-shadow:
+		-1px -1px 0 @pl-text,
+		1px -1px 0 @pl-text,
+		-1px 1px 0 @pl-text,
+		1px 1px 0 @pl-text;
+	/* rest is for webkit only */
+/*
+If I use these, it doubles the effect.
 	-webkit-text-fill-color: @pl-base;
 	-webkit-text-stroke: 1px @pl-text;
+*/
 	}
 span.outline2,
 span.outlinetwo {
