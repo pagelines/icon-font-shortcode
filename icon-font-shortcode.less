@@ -299,90 +299,72 @@ span.outlineten {
 
 /*
 *
-* rotate --> have to add CSS position for it to take effect.
-* NOTES:
-* Does not take effect if used inside a Bootstrap/PageLines button in my testing :-(
-* Not supported in all browsers as of 2013-02-19. Check http://css-tricks.com/transitions-and-animations-on-css-generated-content/ for current status.
+* rotate --> inspired by http://codepen.io/chriscoyier/pen/BkhFI (linked to from http://css-tricks.com/transitions-and-animations-on-css-generated-content/ )
 * At this time, Chrome suffers from aliasing (reported bug, http://stackoverflow.com/questions/6492027/css-transform-jagged-edges-in-chrome ).
 */
 
 /* increments of 30 degrees, with positive and negative options */
-span.rotate,
-span.rotate30,
-span.rotate-330 {
-	position: relative;
+span.rotate:before,
+span.rotate30:before,
+span.rotate-330:before {
 	.rotate(30deg);
 	}
-span.rotate60,
-span.rotate-300 {
-	position: relative;
+span.rotate60:before,
+span.rotate-300:before {
 	.rotate(60deg);
 	}
-span.rotate90,
-span.rotate-270 {
-	position: relative;
+span.rotate90:before,
+span.rotate-270:before {
 	.rotate(90deg);
 	}
-span.rotate120,
-span.rotate-240 {
-	position: relative;
+span.rotate120:before,
+span.rotate-240:before {
 	.rotate(120deg);
 	}
-span.rotate150,
-span.rotate-210 {
-	position: relative;
+span.rotate150:before,
+span.rotate-210:before {
 	.rotate(150deg);
 	}
-span.rotate180,
-span.rotate-180 {
-	position: relative;
+span.rotate180:before,
+span.rotate-180:before {
 	.rotate(180deg);
 	}
-span.rotate210,
-span.rotate-150 {
-	position: relative;
+span.rotate210:before,
+span.rotate-150:before {
 	.rotate(210deg);
 	}
-span.rotate240,
-span.rotate-120 {
-	position: relative;
+span.rotate240:before,
+span.rotate-120:before {
 	.rotate(240deg);
 	}
-span.rotate270,
-span.rotate-90 {
-	position: relative;
+span.rotate270:before,
+span.rotate-90:before {
 	.rotate(270deg);
 	}
-span.rotate300,
-span.rotate-60 {
-	position: relative;
+span.rotate300:before,
+span.rotate-60:before {
 	.rotate(300deg);
 	}
-span.rotate330,
-span.rotate-30 {
-	position: relative;
+span.rotate330:before,
+span.rotate-30:before {
 	.rotate(330deg);
 	}
 
 /* increments of 45 degrees, non-overlapping with the 30's above */
 
-span.rotate45,
-span.rotate-315 {
-	position: relative;
+span.rotate45:before,
+span.rotate-315:before {
 	.rotate(45deg);
 	}
-span.rotate135,
-span.rotate-225 {
-	position: relative;
+span.rotate135:before,
+span.rotate-225:before {
 	.rotate(135deg);
 	}
-span.rotate225,
-span.rotate-135 {
-	position: relative;
+span.rotate225:before,
+span.rotate-135:before {
 	.rotate(225deg);
 	}
-span.rotate315,
-span.rotate-45 {
-	position: relative;
+span.rotate315:before,
+span.rotate-45:before {
 	.rotate(315deg);
 	}
