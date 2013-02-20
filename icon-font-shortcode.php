@@ -119,10 +119,12 @@ class PL_Icon_Font_Shortcode {
 
 
 // Get settings from PageLines Site Options
-if( !ploption('ifs_spanid') ) {
-	$id = ploption('ifs_spanid') . ' ' . $id; // add a space
+if( ploption('ifs_spanid') && !empty($id) ) {
+	 $id = ploption('ifs_spanid') . ' ' . $id; // add a space
+	} else {
+	 $id = ploption('ifs_spanid');
 	}
-if( !ploption('ifs_spanclass') ) {
+if( ploption('ifs_spanclass') ) {
 	$class = ploption('ifs_spanclass') . ' ' . $class; // add a space
 	}
 $linkclass = (ploption('ifs_linkclass')) ? ploption('ifs_linkclass') : 'iconfont'; // no 'if' because if it is blank, we just set a default
@@ -167,15 +169,6 @@ if(empty($thelink)) {
 	$linkcodebefore = '<a class="' . $thelinkclass . '" href="' . $thelink . '" target="_' . $thelinktarget . '">';
 }
 
-/*
-	// if I wanted to add a span id to all shortcodes
-	// $x
-	if(!empty($thespanid)){
-		$x = 'id="iconfont ' . $thespanid . '" class="' . $theclass . '"';
-	} else {
-		$x = 'id="iconfont" class="' . $theclass . '"';
-	}
-*/
 
 	// $x
 	if(!empty($thespanid)){
