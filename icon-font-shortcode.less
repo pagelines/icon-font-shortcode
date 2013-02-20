@@ -8,7 +8,6 @@ http://phpxref.pagelines.com/nav.html?less/mixins.less.source.html
 @fireorange: #FF954F;
 
 
-
 /*
 *
 * Links --> coloring for both a and a:hover get overridden by shortcode's color attribute, if used. User could choose to override with child theme or Custom Code if desired.
@@ -24,7 +23,6 @@ a.iconfont:hover {
 	color: @pl-link;
 	text-decoration: none;
 }
-
 
 /*
 *
@@ -45,20 +43,25 @@ span.light-base {
 /* could add more */
 
 
+
 /*
 *
 * opacity
 *
 */
+span.op0,
 span.opnone {
 	.opacity(0); /* could also use color="transparent" within the shortcode */
 	}
+span.op25,
 span.opsome {
 	.opacity(25);
 	}
+span.op50,
 span.ophalf {
 	.opacity(50);
 	}
+span.op75,
 span.opmost {
 	.opacity(75);
 	}
@@ -69,6 +72,8 @@ span.opmost {
 *
 */
 
+
+/* NEEDS to be used in conjuction with another background property. */
 span.rounded{
 	.border-radius(.1em);
 	}
@@ -78,6 +83,21 @@ span.roundedmore{
 span.roundedlots{
 	.border-radius(1em);
 	}
+
+
+/*
+*	NEEDS to be used in conjuction with another background property, otherwise just effectively adds a bit of padding due to the em > 1
+*	Works best for non-odd-shaped (icon-money does not look good)
+*/
+span.circle,
+span.bgcircle {
+	width:1.2em;
+	height:1.2em;
+	border-radius: .6em;
+	vertical-align: middle;
+	text-align: center;
+}
+
 
 
 span.bgblack {
@@ -101,13 +121,9 @@ span.bgnavy {
 span.bgaqua {
 	background: rgb(0,255,255);
 	}
-
-
 span.bgorange {
 	background: rgb(255,165,0);
 	}
-
-
 span.bgdeeppink {
 	background: rgb(255,20,147);
 	}
@@ -140,15 +156,30 @@ span.bgyellowgreen {
 span.highlight {
 	.highlightMe();
 	}
+
+
 /* could add some of the relative color references */
 
 
+
 /* Custom */
-/* red to orange gradient with orange fallback for old browsers */
 span.bgfire {
 	background: @fireorange;
 	#gradient > .vertical(@fireorange,@firered);
 	}
+	/* red to orange gradient with orange fallback for old browsers */
+
+
+span.bgrainbow {
+	background: -moz-linear-gradient(top, red 0%, orange 18%, yellow 33%, green 48%, blue 65%, indigo 80%, violet 100%);
+	background: -ms-linear-gradient(top, red 0%, orange 18%, yellow 33%, green 48%, blue 65%, indigo 80%, violet 100%);
+	background: -o-linear-gradient(top, red 0%, orange 18%, yellow 33%, green 48%, blue 65%, indigo 80%, violet 100%);
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(red), color-stop(0.18, orange), color-stop(0.33, yellow), color-stop(0.48, green), color-stop(0.65, blue), color-stop(0.8, indigo), to(violet));
+	background: -webkit-linear-gradient(top, red 0%, orange 18%, yellow 33%, green 48%, blue 65%, indigo 80%, violet 100%);
+	background: linear-gradient(top, red 0%, orange 18%, yellow 33%, green 48%, blue 65%, indigo 80%, violet 100%);
+	}
+	/* from http://www.impressivewebs.com/css3-linear-gradient-syntax/ */
+
 
 
 
@@ -201,42 +232,52 @@ span.textshadowhuge {
 *
 */
 span.outline,
+span.outline1,
 span.outlineone {
 	-webkit-text-fill-color: @pl-base;
 	-webkit-text-stroke: 1px @pl-text;
 	}
+span.outline2,
 span.outlinetwo {
 	-webkit-text-fill-color: @pl-base;
 	-webkit-text-stroke: 2px @pl-text;
 	}
+span.outline3,
 span.outlinethree {
 	-webkit-text-fill-color: @pl-base;
 	-webkit-text-stroke: 3px @pl-text;
 	}
+span.outline4,
 span.outlinefour {
 	-webkit-text-fill-color: @pl-base;
 	-webkit-text-stroke: 4px @pl-text;
 	}
+span.outline5,
 span.outlinefive {
 	-webkit-text-fill-color: @pl-base;
 	-webkit-text-stroke: 5px @pl-text;
 	}
+span.outline6,
 span.outlinesix {
 	-webkit-text-fill-color: @pl-base;
 	-webkit-text-stroke: 6px @pl-text;
 	}
+span.outline7,
 span.outlineseven {
 	-webkit-text-fill-color: @pl-base;
 	-webkit-text-stroke: 7px @pl-text;
 	}
+span.outline8,
 span.outlineeight {
 	-webkit-text-fill-color: @pl-base;
 	-webkit-text-stroke: 8px @pl-text;
 	}
+span.outline9,
 span.outlinenine {
 	-webkit-text-fill-color: @pl-base;
 	-webkit-text-stroke: 9px @pl-text;
 	}
+span.outline10,
 span.outlineten {
 	-webkit-text-fill-color: @pl-base;
 	-webkit-text-stroke: 10px @pl-text;
@@ -244,84 +285,92 @@ span.outlineten {
 
 
 
-
 /*
 *
-* glossy text effect based on http://jsfiddle.net/Flocke/aTVdB/
-*
+* rotate --> have to add CSS position for it to take effect.
+* NOTES:
+* Does not take effect if used inside a Bootstrap/PageLines button in my testing :-(
+* Not supported in all browsers as of 2013-02-19. Check http://css-tricks.com/transitions-and-animations-on-css-generated-content/ for current status.
+* At this time, Chrome suffers from aliasing (reported bug, http://stackoverflow.com/questions/6492027/css-transform-jagged-edges-in-chrome ).
 */
-span.glossy:before{
-    content:'';
-    position:absolute;
-    width:130%;
-    height:45%;
-    /*	top:-15%; removed when changed rotate from 10deg to -45deg */
-    right:-5%;
-    background:rgba(255,255,255,0.3); /* fallback */
-	#gradient > .vertical(rgba(255,255,255,0.1),rgba(255,255,255,0.3));
-				/*
-				    background:
-				        -webkit-gradient(
-				        linear,
-				        left top, left bottom,
-				        from(rgba(255,255,255,0.1)),
-				        to(rgba(255,255,255,0.3))
-				        );
-				    background:
-				        -moz-linear-gradient(
-				        top,
-				        rgba(255,255,255,0.1),
-				        rgba(255,255,255,0.3)
-				        );
-				    background:
-				        linear-gradient(
-				        top,
-				        rgba(255,255,255,0.1),
-				        rgba(255,255,255,0.3)
-				        );
-				*/
-	.rotate(-45deg); /* preferred diagonal instead of cutting off the top with .rotate(10deg); */
-				/*	-webkit-transform:rotate(10deg); */
-    -webkit-border-bottom-left-radius: 200px 20px;
-    -webkit-border-bottom-right-radius: 200px 10px;
-    -webkit-border-top-right-radius: 5px 100px;
-				/*	-moz-transform:rotate(10deg); */
-    -moz-border-radius-bottomleft:200px 20px;
-    -moz-border-radius-bottomright:200px 10px;
-    -moz-border-radius-topright:5px 100px;
-				/*	transform:rotate(10deg); */
-    border-bottom-left-radius:200px 20px;
-    border-bottom-right-radius: 200px 10px;
-    border-top-right-radius:5px 100px;
-}
 
-span.glossy {
-    position:relative;
-    overflow:hidden;
-/*
-I do not want a border displayed around it.
-    border:6px solid #FFF;
-    box-shadow:0 1px 4px #ACACAC, 0 0 0 1px #DADADA;
-    -webkit-box-shadow:0 1px 4px #ACACAC, 0 0 0 1px #DADADA;
-    -moz-box-shadow:0 1px 4px #ACACAC, 0 0 0 1px #DADADA;
-*/
-    width:400px;
-    height:300px;
-}
+/* increments of 30 degrees, with positive and negative options */
+span.rotate,
+span.rotate30,
+span.rotate-330 {
+	position: relative;
+	.rotate(30deg);
+	}
+span.rotate60,
+span.rotate-300 {
+	position: relative;
+	.rotate(60deg);
+	}
+span.rotate90,
+span.rotate-270 {
+	position: relative;
+	.rotate(90deg);
+	}
+span.rotate120,
+span.rotate-240 {
+	position: relative;
+	.rotate(120deg);
+	}
+span.rotate150,
+span.rotate-210 {
+	position: relative;
+	.rotate(150deg);
+	}
+span.rotate180,
+span.rotate-180 {
+	position: relative;
+	.rotate(180deg);
+	}
+span.rotate210,
+span.rotate-150 {
+	position: relative;
+	.rotate(210deg);
+	}
+span.rotate240,
+span.rotate-120 {
+	position: relative;
+	.rotate(240deg);
+	}
+span.rotate270,
+span.rotate-90 {
+	position: relative;
+	.rotate(270deg);
+	}
+span.rotate300,
+span.rotate-60 {
+	position: relative;
+	.rotate(300deg);
+	}
+span.rotate330,
+span.rotate-30 {
+	position: relative;
+	.rotate(330deg);
+	}
 
+/* increments of 45 degrees, non-overlapping with the 30's above */
 
-
-
-
-/*
-*
-* rotate --> cannot get any of these to work, but this does work: http://jsfiddle.net/EBXPn/ from http://stackoverflow.com/a/10601074
-*
-*/
-span.rotate i,
-i.rotate,
-i#rotate,
-#rotate,
-span#rotate {
-	.rotate(10deg); /* does not work for me */
-}
+span.rotate45,
+span.rotate-315 {
+	position: relative;
+	.rotate(45deg);
+	}
+span.rotate135,
+span.rotate-225 {
+	position: relative;
+	.rotate(135deg);
+	}
+span.rotate225,
+span.rotate-135 {
+	position: relative;
+	.rotate(225deg);
+	}
+span.rotate315,
+span.rotate-45 {
+	position: relative;
+	.rotate(315deg);
+	}
