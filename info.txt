@@ -7,7 +7,8 @@ Allows you to use a shortcode instead of HTML code to output an icon font, speci
 See <a href="http://www.pagelinestheme.com/icon-font-shortcode?ref=plstore" target="_blank">Plugin's Official Page</a> for all details.
 
 == Changelog ==
-
+== 1.0.2013.02.20.00 ==
+* Added PageLines Site Options page for some settings and quick access to documentation.
 == 1.0.2013.02.19.00 ==
 * Added 'link' and 'target' shortcode attributes to allow an icon to be a link.
 == 1.0.2013.02.17.00 ==
