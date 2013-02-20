@@ -3,7 +3,7 @@
 Plugin Name: Icon Font Shortcode
 Plugin URI: http://pagelinestheme.com/icon-font-shortcode
 Description: Allows you to use a shortcode instead of HTML code to output an icon font, specifically for Font Awesome. Example usage: [i]icon-bolt icon-4x icon-spin icon-border pull-right[/i]. See <a href="http://fortawesome.github.com/Font-Awesome/#examples" target="_blank">Font Awesome Examples</a>. If you don't have Font Awesome but do have Bootstrap Icons, you can still use the shortcode but reference <a href="http://twitter.github.com/bootstrap/base-css.html#icons" target="_blank">Bootstrap Icon Glyphs</a> (scroll down to the "How to use" section) for more information.
-Version: 1.0.2013.02.19.00
+Version: 1.0.2013.02.20.00
 Author: Clifford Paulick
 Author URI: http://tourkick.com/
 Pagelines: true
@@ -62,12 +62,16 @@ class PL_Icon_Font_Shortcode {
 	shortcode code references:
 	 http://betterwp.net/17-protect-shortcodes-from-wpautop-and-the-likes/
 	 http://wp.smashingmagazine.com/2012/05/01/wordpress-shortcodes-complete-guide/
+	color:
+	 e.g. #00ff00, white, rgba(255, 0, 0, 0.5), etc. -- https://developer.mozilla.org/en-US/docs/CSS/color -- predefined color names: https://developer.mozilla.org/en-US/docs/CSS/color_value#Color_keywords
+	font-size:
+	 e.g. 250%, 1.6em, 30px, small, larger, xx-large, x-small, etc. -- https://developer.mozilla.org/en-US/docs/CSS/font-size
 	*/
 	function iconfontshortcode($atts, $iconfontclasses = ''){ //start of shortcode
 		extract(
 			shortcode_atts(array(
-				'color' => '', // e.g. #00ff00, white, rgba(255, 0, 0, 0.5), etc. -- https://developer.mozilla.org/en-US/docs/CSS/color -- predefined color names: https://developer.mozilla.org/en-US/docs/CSS/color_value#Color_keywords
-				'fontsize' => '', // e.g. 250%, 1.6em, 30px, small, larger, xx-large, x-small, etc. -- https://developer.mozilla.org/en-US/docs/CSS/font-size
+				'color' => '',
+				'fontsize' => '',
 				'spanid' => '',
 				'spanclass' => '',
 				'link' => '',
@@ -91,8 +95,13 @@ class PL_Icon_Font_Shortcode {
 
 	// used empty ( http://php.net/manual/en/function.empty.php -- http://www.zachstronaut.com/posts/2009/02/09/careful-with-php-empty.html ) because zero is not a valid value
 
-if(empty($thespanclass)){
-	return ; // I think WordPress does this for us anyways, but let's just make sure.
+if(empty($iconfontclasses)){
+	if ( ! current_user_can('edit_posts') && ! current_user_can('edit_pages') ) {
+		return;
+	} else {
+		$errormessage = '<span class="iconfontshortcodeerrormessage">Icon Font Shortcode used without specifying an icon. (message only shown to Editors and Administrators)</span>';
+		return $errormessage;
+	}
 }
 
 if(empty($thelink)) {
