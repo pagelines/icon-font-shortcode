@@ -4,8 +4,6 @@ and
 http://phpxref.pagelines.com/nav.html?less/mixins.less.source.html
 */
 
-
-
 span.iconfontshortcodeerrormessage {
 	background-color: #f2dede;
 	border-color: #eed3d7;
@@ -41,9 +39,11 @@ span.inverse {
 	background: @pl-text;
 	}
 
-span.darkbase {
+span.darkbase,
+span.dark-base {
 	color: @dark-base;
 	}
+span.lightbase,
 span.light-base {
 	color: @light-base;
 	}
@@ -81,13 +81,18 @@ span.opmost {
 
 
 /* NEEDS to be used in conjuction with another background property. */
-span.rounded {
+span.rounded,
+span.bgrounded {
 	.border-radius(.1em);
 	}
-span.roundedmore {
+span.roundedmore,
+span.bgroundedmore {
 	.border-radius(.5em);
 	}
-span.roundedlots {
+span.roundedlots,
+span.bgroundedlots,
+span.roundedalot,
+span.bgroundedalot {
 	.border-radius(1em);
 	}
 
@@ -113,7 +118,8 @@ span.bgblack {
 span.bgwhite {
 	background: rgb(255,255,255);
 	}
-span.bggray, span.bggrey {
+span.bggray,
+span.bggrey {
 	background: rgb(128,128,128);
 	}
 span.bglime {
@@ -140,7 +146,8 @@ span.bgdeepskyblue {
 span.bgmidnightblue {
 	background: rgb(25,25,112);
 	}
-span.bgslategray, span.bgslategrey {
+span.bgslategray,
+span.bgslategrey {
 	background: rgb(112,128,144);
 	}
 span.bgsnow {
@@ -160,6 +167,7 @@ span.bgyellowgreen {
 
 
 /* Bootstrap's */
+span.bghighlight,
 span.highlight {
 	.highlightMe();
 	}
@@ -198,41 +206,36 @@ span.bgrainbow {
 * shadows
 *
 */
-
-/* box-shadow --> only useful if you also have a background
-* CSS syntax --> box-shadow: h-shadow v-shadow blur spread color inset;
-* LESSified below
-*/
-/* Does not work on pseudo elements - http://stackoverflow.com/a/6969220
-span.shadow {
-	.box-shadow(.1em);
-	}
-span.shadowmore {
-	.box-shadow(.5em);
-	}
-span.shadowlots {
-	.box-shadow(1em);
-	}
-span.shadowhuge {
-	.box-shadow(3em);
-	}
-*/
-
-
 /* Syntax --> text-shadow: h-shadow v-shadow blur color; */
-span.textshadow {
-	text-shadow: .1em .1em .1em @light-base;
+span.textshadow,
+span.textshadowlight {
+	text-shadow: .1em .1em .1em @baseContrastMore;
 	}
-span.textshadowmore {
-	text-shadow: .2em .2em .2em @light-base;
+span.textshadowmore,
+span.textshadowlightmore {
+	text-shadow: .2em .2em .2em @baseContrastMore;
 	}
-span.textshadowlots {
-	text-shadow: .3em .3em .3em @light-base;
+span.textshadowlots,
+span.textshadowlightlots {
+	text-shadow: .3em .3em .3em @baseContrastMore;
 	}
-span.textshadowhuge {
-	text-shadow: .5em .5em .5em @light-base;
+span.textshadowhuge,
+span.textshadowlighthuge {
+	text-shadow: .5em .5em .5em @baseContrastMore;
 	}
 
+span.textshadowdark {
+	text-shadow: .1em .1em .1em @baseContrastDarkMore;
+	}
+span.textshadowdarkmore {
+	text-shadow: .2em .2em .2em @baseContrastDarkMore;
+	}
+span.textshadowdarklots {
+	text-shadow: .3em .3em .3em @baseContrastDarkMore;
+	}
+span.textshadowdarkhuge {
+	text-shadow: .5em .5em .5em @baseContrastDarkMore;
+	}
 
 
 /*
