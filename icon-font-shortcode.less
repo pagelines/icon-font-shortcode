@@ -1,8 +1,11 @@
 /*
 http://demo.pagelines.me/theming/
-and
-http://phpxref.pagelines.com/nav.html?less/mixins.less.source.html
+http://phpxref.pagelines.com/less/icons.less.source.html
+http://phpxref.pagelines.com/less/mixins.less.source.html
+http://phpxref.pagelines.com/includes/less.functions.php.source.html
 */
+
+
 
 span.iconfontshortcodeerrormessage {
 	background-color: #f2dede;
@@ -11,6 +14,44 @@ span.iconfontshortcodeerrormessage {
 	.border-radius(4px);
 	padding:3px;
 	}
+
+
+
+// All icons
+	[class^="icon-"],
+	[class*=" icon-"] {
+		vertical-align: middle; // override theme's default of 'baseline'
+	}
+
+
+
+/*
+*
+* Use an icon for bullet points (top level and 1 nested level)
+*
+*/
+/*
+.hentry ul {
+	list-style-type:none;
+	// text-indent: -.75em;
+
+	li:before { // unordered list bullets
+		content:"\f00c "; //icon-ok
+		font-family: PageLinesFont;
+		margin-right: .5em;
+		color: rgb(255,99,71); //tomato
+		}
+
+	li {
+		ul li:before { // 2nd level of unordered list bullets
+			content:"\f054 "; //icon-chevron-right
+			color: rgb(0,0,128); //navy
+			}
+		}
+}
+*/
+
+
 
 
 /*
@@ -80,6 +121,7 @@ span.opmost {
 */
 
 
+/* Rounded corners */
 /* NEEDS to be used in conjuction with another background property. */
 span.rounded,
 span.bgrounded {
@@ -96,22 +138,326 @@ span.bgroundedalot {
 	.border-radius(1em);
 	}
 
+span.rounded1px,
+span.bgrounded1px {
+	.border-radius(1px);
+	}
+span.rounded2px,
+span.bgrounded2px {
+	.border-radius(2px);
+	}
+span.rounded5px,
+span.bgrounded5px {
+	.border-radius(5px);
+	}
+span.rounded10px,
+span.bgrounded10px {
+	.border-radius(10px);
+	}
+span.rounded20px,
+span.bgrounded20px {
+	.border-radius(20px);
+	}
+span.rounded30px,
+span.bgrounded30px {
+	.border-radius(30px);
+	}
+span.rounded40px,
+span.bgrounded40px {
+	.border-radius(40px);
+	}
+span.rounded50px,
+span.bgrounded50px {
+	.border-radius(50px);
+	}
 
+
+
+/* Oval */
+span.oval,
+span.bgoval {
+	.border-radius(100%);
+	}
+
+
+/* Circles */
 /*
 *	NEEDS to be used in conjuction with another background property, otherwise just effectively adds a bit of padding due to the em > 1
 *	Works best for non-odd-shaped (icon-money does not look good)
 */
 span.circle,
-span.bgcircle {
-	width:1.2em;
-	height:1.2em;
-	border-radius: .6em;
+span.circle1half,
+span.bgcircle1half,
+span.circleonehalf,
+span.bgcircleonehalf {
+	width:1.5em;
+	height:1.5em;
+	border-radius: .75em;
 	vertical-align: middle;
 	text-align: center;
-}
+	//font-size:150%;
+	line-height: 150%;
+	}
+span.circlehalf,
+span.bgcirclehalf {
+	width:.5em;
+	height:.5em;
+	border-radius: .25em;
+	vertical-align: middle;
+	text-align: center;
+	//font-size:50%;
+	line-height: 50%;
+	}
+span.circle1
+span.circle1x,
+span.bgcircle
+span.bgcircle1,
+span.bgcircle1x {
+	width:1em;
+	height:1em;
+	border-radius: .5em;
+	vertical-align: middle;
+	text-align: center;
+	//font-size:100%;
+	line-height: 100%;
+	}
+span.circle2,
+span.circle2x,
+span.bgcircle2,
+span.bgcircle2x {
+	width:2em;
+	height:2em;
+	border-radius: 1em;
+	vertical-align: middle;
+	text-align: center;
+	//font-size:200%;
+	line-height: 200%;
+	}
+span.circle2half,
+span.bgcircle2half,
+span.circletwohalf,
+span.bgcircletwohalf {
+	width:2.5em;
+	height:2.5em;
+	border-radius: 1.25em;
+	vertical-align: middle;
+	text-align: center;
+	//font-size:250%;
+	line-height: 250%;
+	}
+span.circle3,
+span.circle3x,
+span.bgcircle3,
+span.bgcircle3x {
+	width:3em;
+	height:3em;
+	border-radius: 1.5em;
+	vertical-align: middle;
+	text-align: center;
+	//font-size:300%;
+	line-height: 300%;
+	}
+span.circle3half,
+span.bgcircle3half,
+span.circlethreehalf,
+span.bgcirclethreehalf {
+	width:3.5em;
+	height:3.5em;
+	border-radius: 1.75em;
+	vertical-align: middle;
+	text-align: center;
+	//font-size:350%;
+	line-height: 350%;
+	}
+span.circle4,
+span.circle4x,
+span.bgcircle4,
+span.bgcircle4x {
+	width:4em;
+	height:4em;
+	border-radius: 2em;
+	vertical-align: middle;
+	text-align: center;
+	//font-size:400%;
+	line-height: 400%;
+	}
+span.circle4half,
+span.bgcircle4half,
+span.circlefourhalf,
+span.bgcirclefourhalf {
+	width:4.5em;
+	height:4.5em;
+	border-radius: 2.25em;
+	vertical-align: middle;
+	text-align: center;
+	//font-size:450%;
+	line-height: 450%;
+	}
+span.circle5,
+span.circle5x,
+span.bgcircle5,
+span.bgcircle5x {
+	width:5em;
+	height:5em;
+	border-radius: 2.5em;
+	vertical-align: middle;
+	text-align: center;
+	//font-size:500%;
+	line-height: 500%;
+	}
+span.circle5half,
+span.bgcircle5half,
+span.circlefivehalf,
+span.bgcirclefivehalf {
+	width:5.5em;
+	height:5.5em;
+	border-radius: 2.75em;
+	vertical-align: middle;
+	text-align: center;
+	//font-size:550%;
+	line-height: 550%;
+	}
+span.circle6,
+span.circle6x,
+span.bgcircle6,
+span.bgcircle6x {
+	width:6em;
+	height:6em;
+	border-radius: 3em;
+	vertical-align: middle;
+	text-align: center;
+	//font-size:600%;
+	line-height: 600%;
+	}
+span.circle6half,
+span.bgcircle6half,
+span.circlesixhalf,
+span.bgcirclesixhalf {
+	width:6.5em;
+	height:6.5em;
+	border-radius: 3.25em;
+	vertical-align: middle;
+	text-align: center;
+	//font-size:650%;
+	line-height: 650%;
+	}
 
 
 
+
+span.circle20px,
+span.bgcircle20px {
+	width:20px;
+	height:20px;
+	border-radius: 10px;
+	vertical-align: middle;
+	text-align: center;
+	//font-size:20px;
+	line-height: 20px;
+	}
+span.circle50px,
+span.bgcircle50px {
+	width:50px;
+	height:50px;
+	border-radius: 25px;
+	vertical-align: middle;
+	text-align: center;
+	//font-size:50px;
+	line-height: 50px;
+	}
+span.circle100px,
+span.bgcircle100px {
+	width:100px;
+	height:100px;
+	border-radius: 50px;
+	vertical-align: middle;
+	text-align: center;
+	//font-size:100px;
+	line-height: 100px;
+	}
+span.circle150px,
+span.bgcircle150px {
+	width:150px;
+	height:150px;
+	border-radius: 75px;
+	vertical-align: middle;
+	text-align: center;
+	//font-size:150px;
+	line-height: 150px;
+	}
+span.circle200px,
+span.bgcircle200px {
+	width:200px;
+	height:200px;
+	border-radius: 100px;
+	vertical-align: middle;
+	text-align: center;
+	//font-size:200px;
+	line-height: 200px;
+	}
+span.circle250px,
+span.bgcircle250px {
+	width:250px;
+	height:250px;
+	border-radius: 125px;
+	vertical-align: middle;
+	text-align: center;
+	//font-size:250px;
+	line-height: 250px;
+	}
+span.circle300px,
+span.bgcircle300px {
+	width:300px;
+	height:300px;
+	border-radius: 150px;
+	vertical-align: middle;
+	text-align: center;
+	//font-size:300px;
+	line-height: 300px;
+	}
+span.circle350px,
+span.bgcircle350px {
+	width:350px;
+	height:350px;
+	border-radius: 175px;
+	vertical-align: middle;
+	text-align: center;
+	//font-size:350px;
+	line-height: 350px;
+	}
+span.circle400px,
+span.bgcircle400px {
+	width:400px;
+	height:400px;
+	border-radius: 200px;
+	vertical-align: middle;
+	text-align: center;
+	//font-size:400px;
+	line-height: 400px;
+	}
+span.circle450px,
+span.bgcircle450px {
+	width:450px;
+	height:450px;
+	border-radius: 225px;
+	vertical-align: middle;
+	text-align: center;
+	//font-size:450px;
+	line-height: 450px;
+	}
+span.circle500px,
+span.bgcircle500px {
+	width:500px;
+	height:500px;
+	border-radius: 250px;
+	vertical-align: middle;
+	text-align: center;
+	//font-size:500px;
+	line-height: 500px;
+	}
+
+
+/* Colors */
 span.bgblack {
 	background: rgb(0,0,0);
 	}
@@ -199,28 +545,38 @@ span.bgrainbow {
 
 
 
-
-
 /*
 *
 * shadows
 *
 */
-/* Syntax --> text-shadow: h-shadow v-shadow blur color; */
-span.textshadow,
-span.textshadowlight {
+/* text-shadow syntax --> text-shadow: h-shadow v-shadow blur color; */
+span.textinset {
+	text-shadow: 0px -1px 0px @baseContrastMore;
+	}
+span.textinset2 {
+	text-shadow: 0px -2px 0px @baseContrastMore;
+	}
+
+span.textinsetdark {
+	text-shadow: 0px -1px 0px @baseContrastDarkMore;
+	}
+span.textinsetdark2 {
+	text-shadow: 0px -2px 0px @baseContrastDarkMore;
+	}
+
+
+
+span.textshadow {
 	text-shadow: .1em .1em .1em @baseContrastMore;
 	}
-span.textshadowmore,
-span.textshadowlightmore {
+span.textshadowmore {
 	text-shadow: .2em .2em .2em @baseContrastMore;
 	}
-span.textshadowlots,
-span.textshadowlightlots {
+span.textshadowlots {
 	text-shadow: .3em .3em .3em @baseContrastMore;
 	}
-span.textshadowhuge,
-span.textshadowlighthuge {
+span.textshadowhuge {
 	text-shadow: .5em .5em .5em @baseContrastMore;
 	}
 

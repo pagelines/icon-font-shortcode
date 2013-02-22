@@ -3,23 +3,28 @@
 Plugin Name: Icon Font Shortcode
 Plugin URI: http://pagelinestheme.com/icon-font-shortcode?ref=pluginurilink
 Description: A PageLines plugin that lets you use a shortcode instead of HTML code to output an icon font, specifically for Font Awesome. Example usage: [i]icon-bolt icon-4x icon-spin icon-border pull-right[/i]. See <a href="http://fortawesome.github.com/Font-Awesome/#examples" target="_blank">Font Awesome Examples</a>. Please see the <a href="http://www.pagelinestheme.com/icon-font-shortcode?ref=plugindescriptiontext" target="_blank">plugin documentation</a>.
-Version: 1.0.2013.02.20.00
+Version: 1.0.2013.02.22.00
 Author: Clifford Paulick
 Author URI: http://tourkick.com/
 Pagelines: true
 Tags: extension
-Demo: http://pagelinestheme.com/icon-font-shortcode?ref=pl-demo-link
+Demo: http://pagelinestheme.com/icon-font-shortcode?ref=pl-demo-link#demo
 External: http://tourkick.com/?ref=pliconfontshortcodeexternallink
 */
+
+// Check Framework
+add_action('pagelines_setup', 'ifs_init' );
+function ifs_init() {
+    if( !function_exists('ploption') ) {
+        return;
+    }
+}
 
 class PL_Icon_Font_Shortcode {
 
 	function __construct() {
 
 		$this->base_url = sprintf( '%s/%s', WP_PLUGIN_URL,  basename(dirname( __FILE__ )));
-
-		// need to create an icon if an options page is added
-		//$this->icon = $this->base_url . '/icon.png';
 
 		$this->base_dir = sprintf( '%s/%s', WP_PLUGIN_DIR,  basename(dirname( __FILE__ )));
 
@@ -45,38 +50,38 @@ class PL_Icon_Font_Shortcode {
 
 
 	// Add PageLines settings
-	function ifs_options(  ){
-	  $iconfontshortcode_options = array(
-		'salebar_setup' => array(
+	function ifs_options(){
+	  $ifs_options = array(
+		'ifs_setup' => array(
 			'docslink'	=> 'http://www.pagelinestheme.com/icon-font-shortcode?ref=plsettingspagedocslink',
 			'type'		=> 'multi_option',
-			'title'		=> __('Icon Font Shortcode Options', 'iconfontshortcode'),
-			'shortexp'	=> __('If desired, you can add your own IDs and classes to apply to all icon font shortcodes, to assist in global styling.<br />To add multiple, separate each with a space.<br /><span style="font-size:130%;"><strong>All fields are optional.</strong></span><br /><br />Quick Access (links open in a new window):<br /><span style="padding-left:30px;"><a href="http://fortawesome.github.com/Font-Awesome/#icons-new" target="_blank">Font Awesome icon fonts</a></span><br /><span style="padding-left:30px;"><a href="http://fortawesome.github.com/Font-Awesome/#examples" target="_blank">Font Awesome examples</a></span><br /><span style="padding-left:30px;">Plugin documentation (click the "VIEW DOC" link to the right)</span>', 'iconfontshortcode'),
+			'title'		=> __('Icon Font Shortcode Options', 'icon-font-shortcode'),
+			'shortexp'	=> __('If desired, you can add your own IDs and classes to apply to all icon font shortcodes, to assist in global styling.<br />To add multiple, separate each with a space.<br /><span style="font-size:130%;"><strong>All fields are optional.</strong></span><br /><br />Quick Access (links open in a new window):<br /><span style="padding-left:30px;"><a href="http://fortawesome.github.com/Font-Awesome/#icons-new" target="_blank">Font Awesome icon fonts</a></span><br /><span style="padding-left:30px;"><a href="http://fortawesome.github.com/Font-Awesome/#examples" target="_blank">Font Awesome examples</a></span><br /><span style="padding-left:30px;">Plugin documentation (click the "VIEW DOC" link to the right)</span>', 'icon-font-shortcode'),
 			'selectvalues'	=> array(
 				'ifs_spanid' => array(
 					'type'			=> 'text',
-					'inputlabel'	=> __('Span Class(es) &mdash; Default: N/A<br /><span style="padding-left:30px;"><em>FYI:</em> Gets added to any class you add to an individual shortcode.</span>', 'iconfontshortcode')
+					'inputlabel'	=> __('Span Class(es) &mdash; Default: N/A<br /><span style="padding-left:30px;"><em>FYI:</em> Gets added to any class you add to an individual shortcode.</span>', 'icon-font-shortcode')
 				),
 				'ifs_spanclass' => array(
 					'type'			=> 'text',
-					'inputlabel'	=> __('Span Class(es) &mdash; Default: N/A<br /><em><span style="padding-left:30px;">FYI:</em> Gets added to any class you add to an individual shortcode.</span>', 'iconfontshortcode')
+					'inputlabel'	=> __('Span Class(es) &mdash; Default: N/A<br /><em><span style="padding-left:30px;">FYI:</em> Gets added to any class you add to an individual shortcode.</span>', 'icon-font-shortcode')
 				),
 				'ifs_linkclass' => array(
 					'type'			=> 'text',
-					'inputlabel'	=> __('Link Class(es) &mdash; Default: <em>iconfont</em><br /><span style="padding-left:30px;"><span style="color:#b94a48;"><em>Warning:</em></span> If you do not leave this blank, do not forget to add your own styling.</span>', 'iconfontshortcode')
+					'inputlabel'	=> __('Link Class(es) &mdash; Default: <em>iconfont</em><br /><span style="padding-left:30px;"><span style="color:#b94a48;"><em>Warning:</em></span> If you do not leave this blank, do not forget to add your own styling.</span>', 'icon-font-shortcode')
 				)
 			  )
 	 )
 	);
 
-		$iconfontshortcode_settings = array(
+		$ifs_settings = array(
 			'name'		=> 'Icon Font Shortcode',
-			'array'		=> $iconfontshortcode_options,
+			'array'		=> $ifs_options,
 			'icon' 		=> $this->base_url.'/icon.png',
 			'position'	=> 9
 		);
 
-		pl_add_options_page( $iconfontshortcode_settings );
+		pl_add_options_page( $ifs_settings );
 	}
 
 
@@ -96,16 +101,6 @@ class PL_Icon_Font_Shortcode {
 		add_shortcode( 'i', array( &$this, 'iconfontshortcode' ) );
 	}
 
-
-	/*
-	shortcode code references:
-	 http://betterwp.net/17-protect-shortcodes-from-wpautop-and-the-likes/
-	 http://wp.smashingmagazine.com/2012/05/01/wordpress-shortcodes-complete-guide/
-	color:
-	 e.g. #00ff00, white, rgba(255, 0, 0, 0.5), etc. -- https://developer.mozilla.org/en-US/docs/CSS/color -- predefined color names: https://developer.mozilla.org/en-US/docs/CSS/color_value#Color_keywords
-	font-size:
-	 e.g. 250%, 1.6em, 30px, small, larger, xx-large, x-small, etc. -- https://developer.mozilla.org/en-US/docs/CSS/font-size
-	*/
 	function iconfontshortcode($atts, $class = ''){ //start of shortcode
 		extract(
 			shortcode_atts(array(
@@ -116,6 +111,16 @@ class PL_Icon_Font_Shortcode {
 				'target' => ''
 			), $atts)
 		  );
+	/*
+	shortcode code references:
+	 http://betterwp.net/17-protect-shortcodes-from-wpautop-and-the-likes/
+	 http://wp.smashingmagazine.com/2012/05/01/wordpress-shortcodes-complete-guide/
+	color:
+	 e.g. #00ff00, white, rgba(255, 0, 0, 0.5), etc. -- https://developer.mozilla.org/en-US/docs/CSS/color -- predefined color names: https://developer.mozilla.org/en-US/docs/CSS/color_value#Color_keywords
+	font-size:
+	 e.g. 250%, 1.6em, 30px, small, larger, xx-large, x-small, etc. -- https://developer.mozilla.org/en-US/docs/CSS/font-size
+	*/
+
 
 
 // Get settings from PageLines Site Options
@@ -135,11 +140,11 @@ $linkclass = (ploption('ifs_linkclass')) ? ploption('ifs_linkclass') : 'iconfont
 	$thecolor = esc_html( $color );
 	$thefontsize = esc_html( $fontsize );
 	$thespanid = esc_html( $id );
-	  /* $thespanid = strtolower($thespanid); */ // could if we wanted to
+	  $thespanid = strtolower($thespanid); // just because (even though plugin CSS does not target any span IDs
 	$theclass = esc_html( $class );
-	  $theclass = strtolower($theclass); // icon font CSS is case-sensitive
+	  $theclass = strtolower($theclass); // icon font and plugin selectors are lower-case
 	$thelinkclass = esc_html( $linkclass );
-	  /* $thelinkclass = strtolower($thelinkclass); */ // could if we wanted to
+	  $thelinkclass = strtolower($thelinkclass); // plugin selectors are in lower-case
 	$thelink = esc_html( $link );
 	$thelinktarget = esc_html( $target );
 
@@ -150,7 +155,6 @@ if ( stripos($theclass, "icon-") === false ) {
 	if ( !current_user_can('edit_posts') /* && !current_user_can('edit_pages') */ ) {
 		return;
 	} else {
-		/* $errormessage = '<span class="iconfontshortcodeerrormessage">Icon Font Shortcode used without specifying an icon. (message only shown to post and page Editors)</span>'; */
 		$errormessage = '<span class="iconfontshortcodeerrormessage">Icon Font Shortcode used without specifying an icon. (message only shown to Contributors and higher)</span>';
 		return $errormessage;
 	}
@@ -177,6 +181,7 @@ if(empty($thelink)) {
 		$x = 'class="' . $theclass . '"';
 	}
 
+
 	// $y
 	if(!empty($thecolor) && !empty($thefontsize)){
 		$y = ' style="color:' . $thecolor . '; font-size:' . $thefontsize . ';"';
@@ -188,22 +193,34 @@ if(empty($thelink)) {
 		$y = '';
 	}
 
-	// aria-hidden="true"
-	/* References:
-		http://css-tricks.com/examples/PseudoIconTest/
-		http://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden
-		http://www.screenreader.net/ ( http://vimeo.com/36137650 )
-		https://chrome.google.com/webstore/detail/chromevox/kgejglhpjiefppelpmljglcjbhoiplfn
-	*/
+
 	// $z
 	if(empty($linkcodebefore)){
 		$z = '<span ' .$x . $y . ' aria-hidden="true"></span>';
 	} else {
 		$z = $linkcodebefore . '<span ' .$x . $y . ' aria-hidden="true"></span>' . $linkcodeafter;
 	}
+	// aria-hidden="true"
+	/* References:
+		http://css-tricks.com/examples/PseudoIconTest/
+		http://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden
+		http://www.screenreader.net/ ( http://vimeo.com/36137650 )
+		https://chrome.google.com/webstore/detail/chromevox/kgejglhpjiefppelpmljglcjbhoiplfn
+	FYI: Font Awesome already ignored by screen readers (per http://phpxref.pagelines.com/nav.html?less/icons.less.source.html )
+	*/
 
-// final result
-return $z;
+	// final result
+	$debug = 0;
+
+	if($debug == 0){
+		return $z;
+	} else {
+		if(empty($x)) {
+			return 'empty';
+		} else {
+			return 'not empty';
+		}
+	}
 
 
 } // end of shortcode
@@ -211,7 +228,6 @@ return $z;
 } // end of plugin class
 
 new PL_Icon_Font_Shortcode;
-
 
 // End of plugin
 // Do not add closing PHP tag
