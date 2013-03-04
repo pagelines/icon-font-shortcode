@@ -30,7 +30,6 @@ span.iconfontshortcodeerrormessage {
 * Use an icon for bullet points (top level and 1 nested level)
 *
 */
-/*
 .hentry ul {
 	list-style-type:none;
 	// text-indent: -.75em;
@@ -49,7 +48,6 @@ span.iconfontshortcodeerrormessage {
 			}
 		}
 }
-*/
 
 
 
@@ -75,17 +73,17 @@ a.iconfont:hover {
 * LESS colors -> not supported by 'color' shortcode attribute
 *
 */
-span.inverse {
+i.inverse {
 	color: @pl-base;
 	background: @pl-text;
 	}
 
-span.darkbase,
-span.dark-base {
+i.darkbase,
+i.dark-base {
 	color: @dark-base;
 	}
-span.lightbase,
-span.light-base {
+i.lightbase,
+i.light-base {
 	color: @light-base;
 	}
 /* could add more */
@@ -97,20 +95,20 @@ span.light-base {
 * opacity
 *
 */
-span.op0,
-span.opnone {
+i.op0,
+i.opnone {
 	.opacity(0); /* could also use color="transparent" within the shortcode */
 	}
-span.op25,
-span.opsome {
+i.op25,
+i.opsome {
 	.opacity(25);
 	}
-span.op50,
-span.ophalf {
+i.op50,
+i.ophalf {
 	.opacity(50);
 	}
-span.op75,
-span.opmost {
+i.op75,
+i.opmost {
 	.opacity(75);
 	}
 
@@ -123,59 +121,59 @@ span.opmost {
 
 /* Rounded corners */
 /* NEEDS to be used in conjuction with another background property. */
-span.rounded,
-span.bgrounded {
+i.rounded,
+i.bgrounded {
 	.border-radius(.1em);
 	}
-span.roundedmore,
-span.bgroundedmore {
+i.roundedmore,
+i.bgroundedmore {
 	.border-radius(.5em);
 	}
-span.roundedlots,
-span.bgroundedlots,
-span.roundedalot,
-span.bgroundedalot {
+i.roundedlots,
+i.bgroundedlots,
+i.roundedalot,
+i.bgroundedalot {
 	.border-radius(1em);
 	}
 
-span.rounded1px,
-span.bgrounded1px {
+i.rounded1px,
+i.bgrounded1px {
 	.border-radius(1px);
 	}
-span.rounded2px,
-span.bgrounded2px {
+i.rounded2px,
+i.bgrounded2px {
 	.border-radius(2px);
 	}
-span.rounded5px,
-span.bgrounded5px {
+i.rounded5px,
+i.bgrounded5px {
 	.border-radius(5px);
 	}
-span.rounded10px,
-span.bgrounded10px {
+i.rounded10px,
+i.bgrounded10px {
 	.border-radius(10px);
 	}
-span.rounded20px,
-span.bgrounded20px {
+i.rounded20px,
+i.bgrounded20px {
 	.border-radius(20px);
 	}
-span.rounded30px,
-span.bgrounded30px {
+i.rounded30px,
+i.bgrounded30px {
 	.border-radius(30px);
 	}
-span.rounded40px,
-span.bgrounded40px {
+i.rounded40px,
+i.bgrounded40px {
 	.border-radius(40px);
 	}
-span.rounded50px,
-span.bgrounded50px {
+i.rounded50px,
+i.bgrounded50px {
 	.border-radius(50px);
 	}
 
 
 
 /* Oval */
-span.oval,
-span.bgoval {
+i.oval,
+i.bgoval {
 	.border-radius(100%);
 	}
 
@@ -185,11 +183,11 @@ span.bgoval {
 *	NEEDS to be used in conjuction with another background property, otherwise just effectively adds a bit of padding due to the em > 1
 *	Works best for non-odd-shaped (icon-money does not look good)
 */
-span.circle,
-span.circle1half,
-span.bgcircle1half,
-span.circleonehalf,
-span.bgcircleonehalf {
+i.circle,
+i.circle1half,
+i.bgcircle1half,
+i.circleonehalf,
+i.bgcircleonehalf {
 	width:1.5em;
 	height:1.5em;
 	border-radius: .75em;
@@ -198,8 +196,8 @@ span.bgcircleonehalf {
 	//font-size:150%;
 	line-height: 150%;
 	}
-span.circlehalf,
-span.bgcirclehalf {
+i.circlehalf,
+i.bgcirclehalf {
 	width:.5em;
 	height:.5em;
 	border-radius: .25em;
@@ -208,11 +206,11 @@ span.bgcirclehalf {
 	//font-size:50%;
 	line-height: 50%;
 	}
-span.circle1
-span.circle1x,
-span.bgcircle
-span.bgcircle1,
-span.bgcircle1x {
+i.circle1
+i.circle1x,
+i.bgcircle
+i.bgcircle1,
+i.bgcircle1x {
 	width:1em;
 	height:1em;
 	border-radius: .5em;
@@ -221,10 +219,10 @@ span.bgcircle1x {
 	//font-size:100%;
 	line-height: 100%;
 	}
-span.circle2,
-span.circle2x,
-span.bgcircle2,
-span.bgcircle2x {
+i.circle2,
+i.circle2x,
+i.bgcircle2,
+i.bgcircle2x {
 	width:2em;
 	height:2em;
 	border-radius: 1em;
@@ -233,10 +231,10 @@ span.bgcircle2x {
 	//font-size:200%;
 	line-height: 200%;
 	}
-span.circle2half,
-span.bgcircle2half,
-span.circletwohalf,
-span.bgcircletwohalf {
+i.circle2half,
+i.bgcircle2half,
+i.circletwohalf,
+i.bgcircletwohalf {
 	width:2.5em;
 	height:2.5em;
 	border-radius: 1.25em;
@@ -245,10 +243,10 @@ span.bgcircletwohalf {
 	//font-size:250%;
 	line-height: 250%;
 	}
-span.circle3,
-span.circle3x,
-span.bgcircle3,
-span.bgcircle3x {
+i.circle3,
+i.circle3x,
+i.bgcircle3,
+i.bgcircle3x {
 	width:3em;
 	height:3em;
 	border-radius: 1.5em;
@@ -257,10 +255,10 @@ span.bgcircle3x {
 	//font-size:300%;
 	line-height: 300%;
 	}
-span.circle3half,
-span.bgcircle3half,
-span.circlethreehalf,
-span.bgcirclethreehalf {
+i.circle3half,
+i.bgcircle3half,
+i.circlethreehalf,
+i.bgcirclethreehalf {
 	width:3.5em;
 	height:3.5em;
 	border-radius: 1.75em;
@@ -269,10 +267,10 @@ span.bgcirclethreehalf {
 	//font-size:350%;
 	line-height: 350%;
 	}
-span.circle4,
-span.circle4x,
-span.bgcircle4,
-span.bgcircle4x {
+i.circle4,
+i.circle4x,
+i.bgcircle4,
+i.bgcircle4x {
 	width:4em;
 	height:4em;
 	border-radius: 2em;
@@ -281,10 +279,10 @@ span.bgcircle4x {
 	//font-size:400%;
 	line-height: 400%;
 	}
-span.circle4half,
-span.bgcircle4half,
-span.circlefourhalf,
-span.bgcirclefourhalf {
+i.circle4half,
+i.bgcircle4half,
+i.circlefourhalf,
+i.bgcirclefourhalf {
 	width:4.5em;
 	height:4.5em;
 	border-radius: 2.25em;
@@ -293,10 +291,10 @@ span.bgcirclefourhalf {
 	//font-size:450%;
 	line-height: 450%;
 	}
-span.circle5,
-span.circle5x,
-span.bgcircle5,
-span.bgcircle5x {
+i.circle5,
+i.circle5x,
+i.bgcircle5,
+i.bgcircle5x {
 	width:5em;
 	height:5em;
 	border-radius: 2.5em;
@@ -305,10 +303,10 @@ span.bgcircle5x {
 	//font-size:500%;
 	line-height: 500%;
 	}
-span.circle5half,
-span.bgcircle5half,
-span.circlefivehalf,
-span.bgcirclefivehalf {
+i.circle5half,
+i.bgcircle5half,
+i.circlefivehalf,
+i.bgcirclefivehalf {
 	width:5.5em;
 	height:5.5em;
 	border-radius: 2.75em;
@@ -317,10 +315,10 @@ span.bgcirclefivehalf {
 	//font-size:550%;
 	line-height: 550%;
 	}
-span.circle6,
-span.circle6x,
-span.bgcircle6,
-span.bgcircle6x {
+i.circle6,
+i.circle6x,
+i.bgcircle6,
+i.bgcircle6x {
 	width:6em;
 	height:6em;
 	border-radius: 3em;
@@ -329,10 +327,10 @@ span.bgcircle6x {
 	//font-size:600%;
 	line-height: 600%;
 	}
-span.circle6half,
-span.bgcircle6half,
-span.circlesixhalf,
-span.bgcirclesixhalf {
+i.circle6half,
+i.bgcircle6half,
+i.circlesixhalf,
+i.bgcirclesixhalf {
 	width:6.5em;
 	height:6.5em;
 	border-radius: 3.25em;
@@ -345,8 +343,8 @@ span.bgcirclesixhalf {
 
 
 
-span.circle20px,
-span.bgcircle20px {
+i.circle20px,
+i.bgcircle20px {
 	width:20px;
 	height:20px;
 	border-radius: 10px;
@@ -355,8 +353,8 @@ span.bgcircle20px {
 	//font-size:20px;
 	line-height: 20px;
 	}
-span.circle50px,
-span.bgcircle50px {
+i.circle50px,
+i.bgcircle50px {
 	width:50px;
 	height:50px;
 	border-radius: 25px;
@@ -365,8 +363,8 @@ span.bgcircle50px {
 	//font-size:50px;
 	line-height: 50px;
 	}
-span.circle100px,
-span.bgcircle100px {
+i.circle100px,
+i.bgcircle100px {
 	width:100px;
 	height:100px;
 	border-radius: 50px;
@@ -375,8 +373,8 @@ span.bgcircle100px {
 	//font-size:100px;
 	line-height: 100px;
 	}
-span.circle150px,
-span.bgcircle150px {
+i.circle150px,
+i.bgcircle150px {
 	width:150px;
 	height:150px;
 	border-radius: 75px;
@@ -385,8 +383,8 @@ span.bgcircle150px {
 	//font-size:150px;
 	line-height: 150px;
 	}
-span.circle200px,
-span.bgcircle200px {
+i.circle200px,
+i.bgcircle200px {
 	width:200px;
 	height:200px;
 	border-radius: 100px;
@@ -395,8 +393,8 @@ span.bgcircle200px {
 	//font-size:200px;
 	line-height: 200px;
 	}
-span.circle250px,
-span.bgcircle250px {
+i.circle250px,
+i.bgcircle250px {
 	width:250px;
 	height:250px;
 	border-radius: 125px;
@@ -405,8 +403,8 @@ span.bgcircle250px {
 	//font-size:250px;
 	line-height: 250px;
 	}
-span.circle300px,
-span.bgcircle300px {
+i.circle300px,
+i.bgcircle300px {
 	width:300px;
 	height:300px;
 	border-radius: 150px;
@@ -415,8 +413,8 @@ span.bgcircle300px {
 	//font-size:300px;
 	line-height: 300px;
 	}
-span.circle350px,
-span.bgcircle350px {
+i.circle350px,
+i.bgcircle350px {
 	width:350px;
 	height:350px;
 	border-radius: 175px;
@@ -425,8 +423,8 @@ span.bgcircle350px {
 	//font-size:350px;
 	line-height: 350px;
 	}
-span.circle400px,
-span.bgcircle400px {
+i.circle400px,
+i.bgcircle400px {
 	width:400px;
 	height:400px;
 	border-radius: 200px;
@@ -435,8 +433,8 @@ span.bgcircle400px {
 	//font-size:400px;
 	line-height: 400px;
 	}
-span.circle450px,
-span.bgcircle450px {
+i.circle450px,
+i.bgcircle450px {
 	width:450px;
 	height:450px;
 	border-radius: 225px;
@@ -445,8 +443,8 @@ span.bgcircle450px {
 	//font-size:450px;
 	line-height: 450px;
 	}
-span.circle500px,
-span.bgcircle500px {
+i.circle500px,
+i.bgcircle500px {
 	width:500px;
 	height:500px;
 	border-radius: 250px;
@@ -458,63 +456,63 @@ span.bgcircle500px {
 
 
 /* Colors */
-span.bgblack {
+i.bgblack {
 	background: rgb(0,0,0);
 	}
-span.bgwhite {
+i.bgwhite {
 	background: rgb(255,255,255);
 	}
-span.bggray,
-span.bggrey {
+i.bggray,
+i.bggrey {
 	background: rgb(128,128,128);
 	}
-span.bglime {
+i.bglime {
 	background: rgb(0,255,0);
 	}
-span.bgmaroon {
+i.bgmaroon {
 	background: rgb(128,0,0);
 	}
-span.bgnavy {
+i.bgnavy {
 	background: rgb(0,0,128);
 	}
-span.bgaqua {
+i.bgaqua {
 	background: rgb(0,255,255);
 	}
-span.bgorange {
+i.bgorange {
 	background: rgb(255,165,0);
 	}
-span.bgdeeppink {
+i.bgdeeppink {
 	background: rgb(255,20,147);
 	}
-span.bgdeepskyblue {
+i.bgdeepskyblue {
 	background: rgb(0,191,255);
 	}
-span.bgmidnightblue {
+i.bgmidnightblue {
 	background: rgb(25,25,112);
 	}
-span.bgslategray,
-span.bgslategrey {
+i.bgslategray,
+i.bgslategrey {
 	background: rgb(112,128,144);
 	}
-span.bgsnow {
+i.bgsnow {
 	background: rgb(255,250,250);
 	}
-span.bgtomato,
-span.bgtomatoe {
+i.bgtomato,
+i.bgtomatoe {
 	background: rgb(255,99,71);
 	}
-span.bgwhitesmoke {
+i.bgwhitesmoke {
 	background: rgb(245,245,245);
 	}
-span.bgyellowgreen {
+i.bgyellowgreen {
 	background: rgb(154,205,50);
 	}
 
 
 
 /* Bootstrap's */
-span.bghighlight,
-span.highlight {
+i.bghighlight,
+i.highlight {
 	.highlightMe();
 	}
 
@@ -526,14 +524,14 @@ span.highlight {
 /* Custom */
 @firered: #FF1A0A;
 @fireorange: #FF954F;
-span.bgfire {
+i.bgfire {
 	background: @fireorange;
 	#gradient > .vertical(@fireorange,@firered);
 	}
 	/* red to orange gradient with orange fallback for old browsers */
 
 
-span.bgrainbow {
+i.bgrainbow {
 	background: -moz-linear-gradient(top, red 0%, orange 18%, yellow 33%, green 48%, blue 65%, indigo 80%, violet 100%);
 	background: -ms-linear-gradient(top, red 0%, orange 18%, yellow 33%, green 48%, blue 65%, indigo 80%, violet 100%);
 	background: -o-linear-gradient(top, red 0%, orange 18%, yellow 33%, green 48%, blue 65%, indigo 80%, violet 100%);
@@ -551,45 +549,45 @@ span.bgrainbow {
 *
 */
 /* text-shadow syntax --> text-shadow: h-shadow v-shadow blur color; */
-span.textinset {
+i.textinset {
 	text-shadow: 0px -1px 0px @baseContrastMore;
 	}
-span.textinset2 {
+i.textinset2 {
 	text-shadow: 0px -2px 0px @baseContrastMore;
 	}
 
-span.textinsetdark {
+i.textinsetdark {
 	text-shadow: 0px -1px 0px @baseContrastDarkMore;
 	}
-span.textinsetdark2 {
+i.textinsetdark2 {
 	text-shadow: 0px -2px 0px @baseContrastDarkMore;
 	}
 
 
 
-span.textshadow {
+i.textshadow {
 	text-shadow: .1em .1em .1em @baseContrastMore;
 	}
-span.textshadowmore {
+i.textshadowmore {
 	text-shadow: .2em .2em .2em @baseContrastMore;
 	}
-span.textshadowlots {
+i.textshadowlots {
 	text-shadow: .3em .3em .3em @baseContrastMore;
 	}
-span.textshadowhuge {
+i.textshadowhuge {
 	text-shadow: .5em .5em .5em @baseContrastMore;
 	}
 
-span.textshadowdark {
+i.textshadowdark {
 	text-shadow: .1em .1em .1em @baseContrastDarkMore;
 	}
-span.textshadowdarkmore {
+i.textshadowdarkmore {
 	text-shadow: .2em .2em .2em @baseContrastDarkMore;
 	}
-span.textshadowdarklots {
+i.textshadowdarklots {
 	text-shadow: .3em .3em .3em @baseContrastDarkMore;
 	}
-span.textshadowdarkhuge {
+i.textshadowdarkhuge {
 	text-shadow: .5em .5em .5em @baseContrastDarkMore;
 	}
 
@@ -600,9 +598,9 @@ span.textshadowdarkhuge {
 * notice: only works on webkit browsers
 *
 */
-span.outline,
-span.outline1,
-span.outlineone {
+i.outline,
+i.outline1,
+i.outlineone {
 	/* for non-webkit -- limited to only 1px per http://css-tricks.com/adding-stroke-to-web-text/ */
 	color: @pl-base;
 	text-shadow:
@@ -617,48 +615,48 @@ If I use these, it doubles the effect.
 	-webkit-text-stroke: 1px @pl-text;
 */
 	}
-span.outline2,
-span.outlinetwo {
+i.outline2,
+i.outlinetwo {
 	-webkit-text-fill-color: @pl-base;
 	-webkit-text-stroke: 2px @pl-text;
 	}
-span.outline3,
-span.outlinethree {
+i.outline3,
+i.outlinethree {
 	-webkit-text-fill-color: @pl-base;
 	-webkit-text-stroke: 3px @pl-text;
 	}
-span.outline4,
-span.outlinefour {
+i.outline4,
+i.outlinefour {
 	-webkit-text-fill-color: @pl-base;
 	-webkit-text-stroke: 4px @pl-text;
 	}
-span.outline5,
-span.outlinefive {
+i.outline5,
+i.outlinefive {
 	-webkit-text-fill-color: @pl-base;
 	-webkit-text-stroke: 5px @pl-text;
 	}
-span.outline6,
-span.outlinesix {
+i.outline6,
+i.outlinesix {
 	-webkit-text-fill-color: @pl-base;
 	-webkit-text-stroke: 6px @pl-text;
 	}
-span.outline7,
-span.outlineseven {
+i.outline7,
+i.outlineseven {
 	-webkit-text-fill-color: @pl-base;
 	-webkit-text-stroke: 7px @pl-text;
 	}
-span.outline8,
-span.outlineeight {
+i.outline8,
+i.outlineeight {
 	-webkit-text-fill-color: @pl-base;
 	-webkit-text-stroke: 8px @pl-text;
 	}
-span.outline9,
-span.outlinenine {
+i.outline9,
+i.outlinenine {
 	-webkit-text-fill-color: @pl-base;
 	-webkit-text-stroke: 9px @pl-text;
 	}
-span.outline10,
-span.outlineten {
+i.outline10,
+i.outlineten {
 	-webkit-text-fill-color: @pl-base;
 	-webkit-text-stroke: 10px @pl-text;
 	}
@@ -672,67 +670,67 @@ span.outlineten {
 */
 
 /* increments of 30 degrees, with positive and negative options */
-span.rotate:before,
-span.rotate30:before,
-span.rotate-330:before {
+i.rotate:before,
+i.rotate30:before,
+i.rotate-330:before {
 	.rotate(30deg);
 	}
-span.rotate60:before,
-span.rotate-300:before {
+i.rotate60:before,
+i.rotate-300:before {
 	.rotate(60deg);
 	}
-span.rotate90:before,
-span.rotate-270:before {
+i.rotate90:before,
+i.rotate-270:before {
 	.rotate(90deg);
 	}
-span.rotate120:before,
-span.rotate-240:before {
+i.rotate120:before,
+i.rotate-240:before {
 	.rotate(120deg);
 	}
-span.rotate150:before,
-span.rotate-210:before {
+i.rotate150:before,
+i.rotate-210:before {
 	.rotate(150deg);
 	}
-span.rotate180:before,
-span.rotate-180:before {
+i.rotate180:before,
+i.rotate-180:before {
 	.rotate(180deg);
 	}
-span.rotate210:before,
-span.rotate-150:before {
+i.rotate210:before,
+i.rotate-150:before {
 	.rotate(210deg);
 	}
-span.rotate240:before,
-span.rotate-120:before {
+i.rotate240:before,
+i.rotate-120:before {
 	.rotate(240deg);
 	}
-span.rotate270:before,
-span.rotate-90:before {
+i.rotate270:before,
+i.rotate-90:before {
 	.rotate(270deg);
 	}
-span.rotate300:before,
-span.rotate-60:before {
+i.rotate300:before,
+i.rotate-60:before {
 	.rotate(300deg);
 	}
-span.rotate330:before,
-span.rotate-30:before {
+i.rotate330:before,
+i.rotate-30:before {
 	.rotate(330deg);
 	}
 
 /* increments of 45 degrees, non-overlapping with the 30's above */
 
-span.rotate45:before,
-span.rotate-315:before {
+i.rotate45:before,
+i.rotate-315:before {
 	.rotate(45deg);
 	}
-span.rotate135:before,
-span.rotate-225:before {
+i.rotate135:before,
+i.rotate-225:before {
 	.rotate(135deg);
 	}
-span.rotate225:before,
-span.rotate-135:before {
+i.rotate225:before,
+i.rotate-135:before {
 	.rotate(225deg);
 	}
-span.rotate315:before,
-span.rotate-45:before {
+i.rotate315:before,
+i.rotate-45:before {
 	.rotate(315deg);
 	}

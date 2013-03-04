@@ -3,7 +3,7 @@
 Plugin Name: Icon Font Shortcode
 Plugin URI: http://pagelinestheme.com/icon-font-shortcode?ref=pluginurilink
 Description: A PageLines plugin that lets you use a shortcode instead of HTML code to output an icon font, specifically for Font Awesome. Example usage: [i]icon-bolt icon-4x icon-spin icon-border pull-right[/i]. See <a href="http://fortawesome.github.com/Font-Awesome/#examples" target="_blank">Font Awesome Examples</a>. Please see the <a href="http://www.pagelinestheme.com/icon-font-shortcode?ref=plugindescriptiontext" target="_blank">plugin documentation</a>.
-Version: 1.0.2013.02.22.00
+Version: 1.0.2013.03.04.00
 Author: Clifford Paulick
 Author URI: http://tourkick.com/
 Pagelines: true
@@ -23,81 +23,21 @@ function ifs_init() {
 class PL_Icon_Font_Shortcode {
 
 	function __construct() {
-
-		$this->base_url = sprintf( '%s/%s', WP_PLUGIN_URL,  basename(dirname( __FILE__ )));
-
-		$this->base_dir = sprintf( '%s/%s', WP_PLUGIN_DIR,  basename(dirname( __FILE__ )));
-
-		$this->base_file = sprintf( '%s/%s/%s', WP_PLUGIN_DIR,  basename(dirname( __FILE__ )), basename( __FILE__ ));
-
-		// register plugin hooks...
-		$this->plugin_hooks();
-
-		// call in the shortcode
-		add_action( 'init', array( &$this, 'iconfontshortcode_init' ) );
-
+		$this->base_dir	= plugin_dir_path( __FILE__ );
+		$this->base_url = plugins_url( '', __FILE__ );
+		$this->icon		= plugins_url( '/icon.png', __FILE__ );
+		$this->less		= $this->base_dir . '/icon-font-shortcode.less';
+		add_filter( 'pagelines_lesscode', array( &$this, 'get_less' ), 10, 1 );
+		add_action( 'admin_init', array( &$this, 'admin_page' ) );
+		add_action( 'init', array( &$this, 'add_shortcode' ) );
 	}
 
-	function plugin_hooks(){ // Always run
-		add_action( 'pagelines_setup', array( &$this, 'ifs_options' )); // PageLines Site Settings Options
-		add_filter( 'pagelines_lesscode', array( &$this, 'get_less' ), 10, 17 ); // Plugin's LESS code
-	}
-
-	function get_less($less){
-		$less .= pl_file_get_contents( $this->base_dir.'/icon-font-shortcode.less' );
+	function get_less( $less ){
+		$less .= pl_file_get_contents( $this->less );
 		return $less;
 	}
 
-
-	// Add PageLines settings
-	function ifs_options(){
-	  $ifs_options = array(
-		'ifs_setup' => array(
-			'docslink'	=> 'http://www.pagelinestheme.com/icon-font-shortcode?ref=plsettingspagedocslink',
-			'type'		=> 'multi_option',
-			'title'		=> __('Icon Font Shortcode Options', 'icon-font-shortcode'),
-			'shortexp'	=> __('If desired, you can add your own IDs and classes to apply to all icon font shortcodes, to assist in global styling.<br />To add multiple, separate each with a space.<br /><span style="font-size:130%;"><strong>All fields are optional.</strong></span><br /><br />Quick Access (links open in a new window):<br /><span style="padding-left:30px;"><a href="http://fortawesome.github.com/Font-Awesome/#icons-new" target="_blank">Font Awesome icon fonts</a></span><br /><span style="padding-left:30px;"><a href="http://fortawesome.github.com/Font-Awesome/#examples" target="_blank">Font Awesome examples</a></span><br /><span style="padding-left:30px;">Plugin documentation (click the "VIEW DOC" link to the right)</span>', 'icon-font-shortcode'),
-			'selectvalues'	=> array(
-				'ifs_spanid' => array(
-					'type'			=> 'text',
-					'inputlabel'	=> __('Span Class(es) &mdash; Default: N/A<br /><span style="padding-left:30px;"><em>FYI:</em> Gets added to any class you add to an individual shortcode.</span>', 'icon-font-shortcode')
-				),
-				'ifs_spanclass' => array(
-					'type'			=> 'text',
-					'inputlabel'	=> __('Span Class(es) &mdash; Default: N/A<br /><em><span style="padding-left:30px;">FYI:</em> Gets added to any class you add to an individual shortcode.</span>', 'icon-font-shortcode')
-				),
-				'ifs_linkclass' => array(
-					'type'			=> 'text',
-					'inputlabel'	=> __('Link Class(es) &mdash; Default: <em>iconfont</em><br /><span style="padding-left:30px;"><span style="color:#b94a48;"><em>Warning:</em></span> If you do not leave this blank, do not forget to add your own styling.</span>', 'icon-font-shortcode')
-				)
-			  )
-	 )
-	);
-
-		$ifs_settings = array(
-			'name'		=> 'Icon Font Shortcode',
-			'array'		=> $ifs_options,
-			'icon' 		=> $this->base_url.'/icon.png',
-			'position'	=> 9
-		);
-
-		pl_add_options_page( $ifs_settings );
-	}
-
-
-
-
-
-	function iconfontshortcode_init() {
-		// code to enable shortcodes in widgets (from http://hackadelic.com/the-right-way-to-shortcodize-wordpress-widgets )
-		// not needed because PageLines theme already enables (see class.shortcodes.php), but in a slightly different way
-		/*
-		if (!is_admin()) {
-			add_filter('widget_text', 'do_shortcode', 11);
-		}
-		*/
-
-		// the shortcode, called in above
+	function add_shortcode() {
 		add_shortcode( 'i', array( &$this, 'iconfontshortcode' ) );
 	}
 
@@ -124,13 +64,13 @@ class PL_Icon_Font_Shortcode {
 
 
 // Get settings from PageLines Site Options
-if( ploption('ifs_spanid') && !empty($id) ) {
-	 $id = ploption('ifs_spanid') . ' ' . $id; // add a space
+if( ploption('ifs_id') && !empty($id) ) {
+	 $id = ploption('ifs_id') . ' ' . $id; // add a space
 	} else {
-	 $id = ploption('ifs_spanid');
+	 $id = ploption('ifs_id');
 	}
-if( ploption('ifs_spanclass') ) {
-	$class = ploption('ifs_spanclass') . ' ' . $class; // add a space
+if( ploption('ifs_class') ) {
+	$class = ploption('ifs_class') . ' ' . $class; // add a space
 	}
 $linkclass = (ploption('ifs_linkclass')) ? ploption('ifs_linkclass') : 'iconfont'; // no 'if' because if it is blank, we just set a default
 
@@ -139,8 +79,8 @@ $linkclass = (ploption('ifs_linkclass')) ? ploption('ifs_linkclass') : 'iconfont
 	// sanitization reference: http://wp.tutsplus.com/tutorials/creative-coding/data-sanitization-and-validation-with-wordpress/
 	$thecolor = esc_html( $color );
 	$thefontsize = esc_html( $fontsize );
-	$thespanid = esc_html( $id );
-	  $thespanid = strtolower($thespanid); // just because (even though plugin CSS does not target any span IDs
+	$theid = esc_html( $id );
+	  $theid = strtolower($theid); // just because (even though plugin CSS does not target any IDs
 	$theclass = esc_html( $class );
 	  $theclass = strtolower($theclass); // icon font and plugin selectors are lower-case
 	$thelinkclass = esc_html( $linkclass );
@@ -149,7 +89,7 @@ $linkclass = (ploption('ifs_linkclass')) ? ploption('ifs_linkclass') : 'iconfont
 	$thelinktarget = esc_html( $target );
 
 
-// Display an error message if the shortcode is used but no icon is specified (because then it just spits out an empty span, if anything at all.
+// Display an error message if the shortcode is used but no icon is specified (because then it just spits out an empty <i></i>, if anything at all.
 // Does not protect from using the shortcode without closing the shortcode.
 if ( stripos($theclass, "icon-") === false ) {
 	if ( !current_user_can('edit_posts') /* && !current_user_can('edit_pages') */ ) {
@@ -175,8 +115,8 @@ if(empty($thelink)) {
 
 
 	// $x
-	if(!empty($thespanid)){
-		$x = 'id="' . $thespanid . '" class="' . $theclass . '"';
+	if(!empty($theid)){
+		$x = 'id="' . $theid . '" class="' . $theclass . '"';
 	} else {
 		$x = 'class="' . $theclass . '"';
 	}
@@ -196,9 +136,9 @@ if(empty($thelink)) {
 
 	// $z
 	if(empty($linkcodebefore)){
-		$z = '<span ' .$x . $y . ' aria-hidden="true"></span>';
+		$z = '<i ' .$x . $y . ' aria-hidden="true"></i>';
 	} else {
-		$z = $linkcodebefore . '<span ' .$x . $y . ' aria-hidden="true"></span>' . $linkcodeafter;
+		$z = $linkcodebefore . '<i ' .$x . $y . ' aria-hidden="true"></i>' . $linkcodeafter;
 	}
 	// aria-hidden="true"
 	/* References:
@@ -224,6 +164,57 @@ if(empty($thelink)) {
 
 
 } // end of shortcode
+
+
+
+
+
+	// Add PageLines settings
+	function admin_page() {
+		if ( ! function_exists( 'ploption' ) )
+			return;
+		$option_args = array(
+			'name'		=> 'icon_font_shortcode', // no spaces allowed
+			'title'		=> 'Icon Font Shortcode', // name of admin page title
+			'array'		=> $this->options_array(),
+			'icon'		=> $this->icon,
+			'position'	=> 5
+		);
+		pl_add_options_page( $option_args );
+	}
+
+
+	function options_array(){
+	  $options = array(
+		'ifs_options' => array(
+			'docslink'	=> 'http://www.pagelinestheme.com/icon-font-shortcode?ref=plsettingspagedocslink',
+			'type'		=> 'multi_option',
+			'title'		=> __('Icon Font Shortcode Options', 'icon-font-shortcode'),
+			'shortexp'	=> __('If desired, you can add your own IDs and classes to apply to all icon font shortcodes, to assist in global styling.<br />To add multiple, separate each with a space.<br /><span style="font-size:130%;"><strong>All fields are optional.</strong></span><br /><br />Quick Access (links open in a new window):<br /><span style="padding-left:30px;"><a href="http://fortawesome.github.com/Font-Awesome/#icons-new" target="_blank">Font Awesome icon fonts</a></span><br /><span style="padding-left:30px;"><a href="http://fortawesome.github.com/Font-Awesome/#examples" target="_blank">Font Awesome examples</a></span><br /><span style="padding-left:30px;">Plugin documentation (click the "VIEW DOC" link to the right)</span>', 'icon-font-shortcode'),
+			'selectvalues'	=> array(
+				'ifs_id' => array(
+					'type'			=> 'text',
+					'inputlabel'	=> __('ID(s) &mdash; Default: N/A<br /><span style="padding-left:30px;">Adds this ID to all icon font shortcode outputs.</span>', 'icon-font-shortcode')
+				),
+				'ifs_class' => array(
+					'type'			=> 'text',
+					'inputlabel'	=> __('Class(es) &mdash; Default: N/A<br /><span style="padding-left:30px;">Adds this CLASS to all icon font shortcode outputs.</span>', 'icon-font-shortcode')
+				),
+				'ifs_linkclass' => array(
+					'type'			=> 'text',
+					'inputlabel'	=> __('Link Class(es) &mdash; Default: <em>iconfont</em><br /><span style="padding-left:30px;">Consider leaving blank and targeting the default link class with CSS/LESS. But it is here if you want to use it.</span>', 'icon-font-shortcode')
+				)
+			  )
+		)
+	  );
+	return $options;
+	}
+
+
+
+
+
+
 
 } // end of plugin class
 
