@@ -27,33 +27,6 @@ span.iconfontshortcodeerrormessage {
 
 /*
 *
-* Use an icon for bullet points (top level and 1 nested level)
-*
-*/
-.hentry ul {
-	list-style-type:none;
-	// text-indent: -.75em;
-
-	li:before { // unordered list bullets
-		content:"\f00c "; //icon-ok
-		font-family: PageLinesFont;
-		margin-right: .5em;
-		color: rgb(255,99,71); //tomato
-		}
-
-	li {
-		ul li:before { // 2nd level of unordered list bullets
-			content:"\f054 "; //icon-chevron-right
-			color: rgb(0,0,128); //navy
-			}
-		}
-}
-
-
-
-
-/*
-*
 * Links --> coloring for both a and a:hover get overridden by shortcode's color attribute, if used. User could choose to override with child theme or Custom Code if desired.
 *
 */

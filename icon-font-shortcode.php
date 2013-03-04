@@ -183,14 +183,14 @@ if(empty($thelink)) {
 		pl_add_options_page( $option_args );
 	}
 
-
+	// PageLines Site Options settings ( see /wp-content/themes/pagelines/admin/class.options.engine.php around Line 26 for all possible settings fields )
 	function options_array(){
 	  $options = array(
-		'ifs_options' => array(
+		'ifs_intro' => array(
 			'docslink'	=> 'http://www.pagelinestheme.com/icon-font-shortcode?ref=plsettingspagedocslink',
 			'type'		=> 'multi_option',
 			'title'		=> __('Icon Font Shortcode Options', 'icon-font-shortcode'),
-			'shortexp'	=> __('If desired, you can add your own IDs and classes to apply to all icon font shortcodes, to assist in global styling.<br />To add multiple, separate each with a space.<br /><span style="font-size:130%;"><strong>All fields are optional.</strong></span><br /><br />Quick Access (links open in a new window):<br /><span style="padding-left:30px;"><a href="http://fortawesome.github.com/Font-Awesome/#icons-new" target="_blank">Font Awesome icon fonts</a></span><br /><span style="padding-left:30px;"><a href="http://fortawesome.github.com/Font-Awesome/#examples" target="_blank">Font Awesome examples</a></span><br /><span style="padding-left:30px;">Plugin documentation (click the "VIEW DOC" link to the right)</span>', 'icon-font-shortcode'),
+			'shortexp'	=> __('If desired, you can add your own IDs and classes to apply to all icon font shortcodes, to assist in global styling.<br />To add multiple, separate each with a space.<br /><span style="font-size:130%;"><strong>All fields are optional.</strong></span><br /><br />Quick Access (links open in a new window):<br /><span style="padding-left:30px;"><a href="http://fortawesome.github.com/Font-Awesome/#icons-new" target="_blank">Font Awesome icon fonts</a></span><br /><span style="padding-left:30px;"><a href="http://fortawesome.github.com/Font-Awesome/#examples" target="_blank">Font Awesome examples</a></span><br /><span style="padding-left:30px;">BONUS: LESS CSS <em>child theme</em> code to <a href="http://www.pagelinestheme.com/icon-font-shortcode/icon-font-bullets" target="_blank">choose an icon font icon as your site-wide bullets</a> &mdash; password is <em>iloveiconfonts</em></span><br /><span style="padding-left:30px;">Plugin documentation (click the "VIEW DOC" link to the right)</span>', 'icon-font-shortcode'),
 			'selectvalues'	=> array(
 				'ifs_id' => array(
 					'type'			=> 'text',
@@ -205,7 +205,7 @@ if(empty($thelink)) {
 					'inputlabel'	=> __('Link Class(es) &mdash; Default: <em>iconfont</em><br /><span style="padding-left:30px;">Consider leaving blank and targeting the default link class with CSS/LESS. But it is here if you want to use it.</span>', 'icon-font-shortcode')
 				)
 			  )
-		)
+		),
 	  );
 	return $options;
 	}
