@@ -183,7 +183,7 @@ if(empty($thelink)) {
 		pl_add_options_page( $option_args );
 	}
 
-	// PageLines Site Options settings ( see /wp-content/themes/pagelines/admin/class.options.engine.php around Line 26 for all possible settings fields )
+	// PageLines Site Options settings ( see http://phpxref.pagelines.com/admin/class.options.engine.php.source.html around Line 26 for settings )
 	function options_array(){
 	  $options = array(
 		'ifs_intro' => array(
