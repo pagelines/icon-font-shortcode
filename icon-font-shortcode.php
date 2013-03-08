@@ -1,15 +1,15 @@
 <?php
 /*
 Plugin Name: Icon Font Shortcode
-Plugin URI: http://pagelinestheme.com/icon-font-shortcode?ref=pluginurilink
-Description: A PageLines plugin that lets you use a shortcode instead of HTML code to output an icon font, specifically for Font Awesome. Example usage: [i]icon-bolt icon-4x icon-spin icon-border pull-right[/i]. See <a href="http://fortawesome.github.com/Font-Awesome/#examples" target="_blank">Font Awesome Examples</a>. Please see the <a href="http://www.pagelinestheme.com/icon-font-shortcode?ref=plugindescriptiontext" target="_blank">plugin documentation</a>.
-Version: 1.0.2013.03.04.00
+Plugin URI: http://www.pagelinestheme.com/icon-font-shortcode?utm_source=pagelines&utm_medium=plugin&utm_content=pluginuri&utm_campaign=icon_font_shortcode_plugin
+Description: A PageLines plugin that lets you use a shortcode instead of HTML code to output an icon font, specifically for Font Awesome. Example usage: [i]icon-bolt icon-4x icon-spin icon-border pull-right[/i]. See <a href="http://fortawesome.github.com/Font-Awesome/#examples" target="_blank">Font Awesome Examples</a>. Please see the <a href="http://www.pagelinestheme.com/icon-font-shortcode?utm_source=pagelines&utm_medium=plugin&utm_content=plugindescription&utm_campaign=icon_font_shortcode_plugin" target="_blank">plugin documentation</a>.
+Version: 1.0.2013.03.08.00
 Author: Clifford Paulick
-Author URI: http://tourkick.com/
+Author URI: http://tourkick.com/?utm_source=pagelines&utm_medium=plugin&utm_content=authoruri&utm_campaign=icon_font_shortcode_plugin
 Pagelines: true
 Tags: extension
-Demo: http://pagelinestheme.com/icon-font-shortcode?ref=pl-demo-link#demo
-External: http://tourkick.com/?ref=pliconfontshortcodeexternallink
+Demo: http://www.pagelinestheme.com/icon-font-shortcode#demo?utm_source=pagelines&utm_medium=plugin&utm_content=plugindemo&utm_campaign=icon_font_shortcode_plugin
+External: http://tourkick.com/?utm_source=pagelines&utm_medium=plugin&utm_content=externallink&utm_campaign=icon_font_shortcode_plugin
 */
 
 // Check Framework
@@ -187,10 +187,10 @@ if(empty($thelink)) {
 	function options_array(){
 	  $options = array(
 		'ifs_intro' => array(
-			'docslink'	=> 'http://www.pagelinestheme.com/icon-font-shortcode?ref=plsettingspagedocslink',
+			'docslink'	=> 'http://www.pagelinestheme.com/icon-font-shortcode?utm_source=pagelines&utm_medium=plugin&utm_content=pladmindocslink&utm_campaign=icon_font_shortcode_plugin',
 			'type'		=> 'multi_option',
 			'title'		=> __('Icon Font Shortcode Options', 'icon-font-shortcode'),
-			'shortexp'	=> __('If desired, you can add your own IDs and classes to apply to all icon font shortcodes, to assist in global styling.<br />To add multiple, separate each with a space.<br /><span style="font-size:130%;"><strong>All fields are optional.</strong></span><br /><br />Quick Access (links open in a new window):<br /><span style="padding-left:30px;"><a href="http://fortawesome.github.com/Font-Awesome/#icons-new" target="_blank">Font Awesome icon fonts</a></span><br /><span style="padding-left:30px;"><a href="http://fortawesome.github.com/Font-Awesome/#examples" target="_blank">Font Awesome examples</a></span><br /><span style="padding-left:30px;">BONUS: LESS CSS <em>child theme</em> code to <a href="http://www.pagelinestheme.com/icon-font-shortcode/icon-font-bullets" target="_blank">choose an icon font icon as your site-wide bullets</a> &mdash; password is <em>iloveiconfonts</em></span><br /><span style="padding-left:30px;">Plugin documentation (click the "VIEW DOC" link to the right)</span>', 'icon-font-shortcode'),
+			'shortexp'	=> __('If desired, you can add your own IDs and classes to apply to all icon font shortcodes, to assist in global styling.<br />To add multiple, separate each with a space.<br /><span style="font-size:130%;"><strong>All fields are optional.</strong></span><br /><br />Quick Access (links open in a new window):<br /><span style="padding-left:30px;"><a href="http://fortawesome.github.com/Font-Awesome/#icons-new" target="_blank">Font Awesome icon fonts</a></span><br /><span style="padding-left:30px;"><a href="http://fortawesome.github.com/Font-Awesome/#examples" target="_blank">Font Awesome examples</a></span><br /><span style="padding-left:30px;">BONUS: LESS CSS <em>child theme</em> code to <a href="http://www.pagelinestheme.com/icon-font-shortcode/icon-font-bullets?utm_source=pagelines&utm_medium=plugin&utm_content=pladminshortexp&utm_campaign=icon_font_shortcode_plugin" target="_blank">choose an icon font icon as your site-wide bullets</a> &mdash; password is <em>iloveiconfonts</em></span><br /><span style="padding-left:30px;">Plugin documentation (click the "VIEW DOC" link to the right)</span>', 'icon-font-shortcode'),
 			'selectvalues'	=> array(
 				'ifs_id' => array(
 					'type'			=> 'text',
