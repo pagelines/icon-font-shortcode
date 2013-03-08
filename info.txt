@@ -1,11 +1,13 @@
 == Description ==
 
+* SALE: 40% off during the month of March 2013! Will be $9.99 starting April 1, 2013. *
+
 Allows you to use a shortcode instead of HTML code to output an icon font, specifically for Font Awesome. Example usage: [i]icon-bolt icon-4x icon-spin icon-border pull-right[/i]
 
 * Requires both opening [i] and closing [/i]
 
-See <a href="http://www.pagelinestheme.com/icon-font-shortcode?ref=plstore" target="_blank">Plugin's Official Page</a> for all details.
+See <a href="http://www.pagelinestheme.com/icon-font-shortcode?utm_source=pagelines&utm_medium=plugin&utm_content=plstoredescription&utm_campaign=icon_font_shortcode_plugin" target="_blank">Plugin's Official Page</a> for all details.
 
 == Changelog ==
-== 1.0.2013.03.04.00 ==
+== 1.0.2013.03.08.00 ==
 * Initial release
