@@ -3,7 +3,7 @@
 Plugin Name: Icon Font Shortcode
 Plugin URI: http://www.pagelinestheme.com/icon-font-shortcode?utm_source=pagelines&utm_medium=plugin&utm_content=pluginuri&utm_campaign=icon_font_shortcode_plugin
 Description: A PageLines plugin that lets you use a shortcode instead of HTML code to output an icon font, specifically for Font Awesome. Example usage: [i]icon-bolt icon-4x icon-spin icon-border pull-right[/i]. See <a href="http://fortawesome.github.com/Font-Awesome/#examples" target="_blank">Font Awesome Examples</a>. Please see the <a href="http://www.pagelinestheme.com/icon-font-shortcode?utm_source=pagelines&utm_medium=plugin&utm_content=plugindescription&utm_campaign=icon_font_shortcode_plugin" target="_blank">plugin documentation</a>.
-Version: 1.0.2013.03.08.00
+Version: 1.0.2013.03.09.00
 Author: Clifford Paulick
 Author URI: http://tourkick.com/?utm_source=pagelines&utm_medium=plugin&utm_content=authoruri&utm_campaign=icon_font_shortcode_plugin
 Pagelines: true
@@ -185,12 +185,47 @@ if(empty($thelink)) {
 
 	// PageLines Site Options settings ( see http://phpxref.pagelines.com/admin/class.options.engine.php.source.html around Line 26 for settings )
 	function options_array(){
+		$codesnippet = sprintf('
+/*
+* Code to use an icon for bullet points (top level and 1 nested level)
+*
+* Only for PageLines Theme
+* Provided by http://pagelinestheme.com/icon-font-shortcode but the Icon Font Shortcode plugin is not required for this code to work.
+*
+* Tested and working as of March 2013.
+*
+* STEPS:
+* 1) Copy and Paste into your child theme\'s style.less file (not .css and not in the Custom Code section of your PageLines Site Options settings.
+* 2) Follow along with the comments in the code below
+* 3) Save your child theme\'s style.less file
+* 4) Clear your site\'s cache
+* 5) Refresh your site to see that your bullet lists now have your chosen icons
+*
+*/
+.hentry ul {
+	list-style-type:none;
+
+	li:before { // unordered list bullets (top level)
+		content:"\f00c"; //value for \'icon-ok\' from http://phpxref.pagelines.com/less/icons.less.source.html --> Choose your own.
+		font-family: PageLinesFont;
+		margin-right: .5em;
+		color: rgb(255,99,71); //tomato color -- change to your own color choice, including LESS variables
+		}
+
+	li {
+		ul li:before { // 2nd level of (i.e. nested) unordered list bullets
+			content:"\f054"; //icon-chevron-right -- see link above and choose desired icon font value for 2nd level bullets
+			color: rgb(0,0,128); //navy color -- change to your own color choice, including LESS variables
+			}
+		}
+		}');
+
 	  $options = array(
 		'ifs_intro' => array(
-			'docslink'	=> 'http://www.pagelinestheme.com/icon-font-shortcode?utm_source=pagelines&utm_medium=plugin&utm_content=pladmindocslink&utm_campaign=icon_font_shortcode_plugin',
+			'docslink'	=> 'http://www.pagelinestheme.com/icon-font-shortcode?ref=plsettingspagedocslink',
 			'type'		=> 'multi_option',
 			'title'		=> __('Icon Font Shortcode Options', 'icon-font-shortcode'),
-			'shortexp'	=> __('If desired, you can add your own IDs and classes to apply to all icon font shortcodes, to assist in global styling.<br />To add multiple, separate each with a space.<br /><span style="font-size:130%;"><strong>All fields are optional.</strong></span><br /><br />Quick Access (links open in a new window):<br /><span style="padding-left:30px;"><a href="http://fortawesome.github.com/Font-Awesome/#icons-new" target="_blank">Font Awesome icon fonts</a></span><br /><span style="padding-left:30px;"><a href="http://fortawesome.github.com/Font-Awesome/#examples" target="_blank">Font Awesome examples</a></span><br /><span style="padding-left:30px;">BONUS: LESS CSS <em>child theme</em> code to <a href="http://www.pagelinestheme.com/icon-font-shortcode/icon-font-bullets?utm_source=pagelines&utm_medium=plugin&utm_content=pladminshortexp&utm_campaign=icon_font_shortcode_plugin" target="_blank">choose an icon font icon as your site-wide bullets</a> &mdash; password is <em>iloveiconfonts</em></span><br /><span style="padding-left:30px;">Plugin documentation (click the "VIEW DOC" link to the right)</span>', 'icon-font-shortcode'),
+			'shortexp'	=> __('If desired, you can add your own IDs and classes to apply to all icon font shortcodes, to assist in global styling.<br />To add multiple, separate each with a space.<br /><span style="font-size:130%;"><strong>All fields are optional.</strong></span><br /><br />Quick Access (links open in a new window):<br /><span style="padding-left:30px;"><a href="http://fortawesome.github.com/Font-Awesome/#icons-new" target="_blank">Font Awesome icon fonts</a></span><br /><span style="padding-left:30px;"><a href="http://fortawesome.github.com/Font-Awesome/#examples" target="_blank">Font Awesome examples</a></span><br /><span style="padding-left:30px;">Plugin documentation (click the "VIEW DOC" link to the right)</span><br /><br /><p><strong><span style="font-size:130%;">Icon font icons as bullet points (unordered list)</span></strong><br />If you want to style your unordered lists with icon fonts:<br /><span style="padding-left:30px;"><strong>#</strong> Copy and paste (and read the instructions and change the options as you want) the code below in your <strong>child theme</strong>.</span><br /><em><span style="color:#b94a48;">NOTE: does NOT work inside PageLines &rarr; Site Options &rarr; Custom Code</span></em> (unless you escape the forward slashes, but then you have to remember to add an additional slash each time you want to edit Custom Code for something else in the future... so just do not use in Custom Code).<br /><span style="padding-left:30px;"><strong>#</strong> Must be added to <strong>child theme\'s style.less file</strong> (not style.css).</span></p><textarea rows="50" cols="100" onclick="this.focus();this.select()" readonly="readonly">' . $codesnippet . '</textarea>', 'icon-font-shortcode'),
 			'selectvalues'	=> array(
 				'ifs_id' => array(
 					'type'			=> 'text',

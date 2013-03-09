@@ -9,5 +9,5 @@ Allows you to use a shortcode instead of HTML code to output an icon font, speci
 See <a href="http://www.pagelinestheme.com/icon-font-shortcode?utm_source=pagelines&utm_medium=plugin&utm_content=plstoredescription&utm_campaign=icon_font_shortcode_plugin" target="_blank">Plugin's Official Page</a> for all details.
 
 == Changelog ==
-== 1.0.2013.03.08.00 ==
+== 1.0.2013.03.09.00 ==
 * Initial release
