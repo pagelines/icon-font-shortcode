@@ -1,12 +1,23 @@
 == Description ==
 
-* SALE: 40% off during the month of March 2013! Will be $9.99 starting April 1, 2013. *
+<strong>LAUNCH SALE!</strong> <span style="color:#b94a48;">40% off during the month of March!</span> After March, price will be $9.99.
 
-Allows you to use a shortcode instead of HTML code to output an icon font, specifically for Font Awesome. Example usage: [i]icon-bolt icon-4x icon-spin icon-border pull-right[/i]
+Allows you to use a shortcode instead of HTML code to output an icon font, specifically for Font Awesome. Example usage: [i]icon-bolt icon-border[/i]
 
-* Requires both opening [i] and closing [/i]
+<strong>Requires both opening <code>[i]</code> and closing <code>[/i]</code>, just like most WordPress shortcodes.</strong>
 
-See <a href="http://www.pagelinestheme.com/icon-font-shortcode?utm_source=pagelines&utm_medium=plugin&utm_content=plstoredescription&utm_campaign=icon_font_shortcode_plugin" target="_blank">Plugin's Official Page</a> for all details.
+With this shortcode plugin, you can maximize your usage of icon fonts, which are infinitely scalable and perfect on retina displays.
+<h3>Highlights</h3>
+<p style="padding-left:30px;">&raquo; No more switching between Visual Editor and Text/HTML Editor
+<br />&raquo; Actually see where in your content you put the icons, since the non-shortcode version doesn't show up in Visual Editor
+<br />&raquo; Change the color or font-size of any icon
+<br />&raquo; Turn any icon into a link
+<br />&raquo; Supports all <a href="http://fortawesome.github.com/Font-Awesome/" target="_blank">Font Awesome icons</a>
+<br />&raquo; Over a dozen built-in styles: invert colors, opacity/transparency, drop shadow, outline/stroke, even rotate the icons! Also background color, rounded corners background, circle background.
+<br />&raquo; Further customize yourself with CSS ID and class selectors.
+<br />&raquo; Use icon font icons for your site-wide bullets!
+<br />&raquo; And more!</p>
+See <a href="http://www.pagelinestheme.com/icon-font-shortcode?utm_source=pagelines&utm_medium=plugin&utm_content=plstoredescription&utm_campaign=icon_font_shortcode_plugin" target="_blank">Plugin's Official Page</a> for examples, FAQs, and all the details.
 
 == Changelog ==
 == 1.0.2013.03.09.00 ==
