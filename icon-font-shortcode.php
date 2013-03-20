@@ -2,8 +2,8 @@
 /*
 Plugin Name: Icon Font Shortcode
 Plugin URI: http://www.pagelinestheme.com/icon-font-shortcode?utm_source=pagelines&utm_medium=plugin&utm_content=pluginuri&utm_campaign=icon_font_shortcode_plugin
-Description: A PageLines plugin that lets you use a shortcode instead of HTML code to output an icon font, specifically for Font Awesome. Example usage: [i]icon-bolt icon-4x icon-spin icon-border pull-right[/i]. See <a href="http://fortawesome.github.com/Font-Awesome/#examples" target="_blank">Font Awesome Examples</a>. Please see the <a href="http://www.pagelinestheme.com/icon-font-shortcode?utm_source=pagelines&utm_medium=plugin&utm_content=plugindescription&utm_campaign=icon_font_shortcode_plugin" target="_blank">plugin documentation</a>.
-Version: 1.0.2013.03.09.00
+Description: A PageLines plugin that lets you use a shortcode instead of HTML code to output an icon font, specifically for Font Awesome. Example usage: [i]icon-bolt icon-4x icon-spin icon-border pull-right[/i]. See <a href="http://fortawesome.github.com/Font-Awesome/#examples" target="_blank">Font Awesome Examples</a>.
+Version: 1.1.20130320
 Author: Clifford Paulick
 Author URI: http://tourkick.com/?utm_source=pagelines&utm_medium=plugin&utm_content=authoruri&utm_campaign=icon_font_shortcode_plugin
 Pagelines: true
