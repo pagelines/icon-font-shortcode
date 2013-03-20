@@ -2,7 +2,7 @@
 /*
 Plugin Name: Icon Font Shortcode
 Plugin URI: http://www.pagelinestheme.com/icon-font-shortcode?utm_source=pagelines&utm_medium=plugin&utm_content=pluginuri&utm_campaign=icon_font_shortcode_plugin
-Description: A PageLines plugin that lets you use a shortcode instead of HTML code to output an icon font, specifically for Font Awesome. Example usage: <strong>[i color="green"]icon-search[/i]</strong> or <strong>[i]icon-spinner icon-spin[/i]</strong>. See <a href="http://www.pagelinestheme.com/icon-font-shortcode?utm_source=pagelines&utm_medium=plugin&utm_content=plugindescription&utm_campaign=icon_font_shortcode_plugin" target="_blank">Documentation</a> for more.
+Description: A PageLines plugin that lets you use a shortcode instead of HTML code to output an icon font, specifically for Font Awesome. See <a href="http://www.pagelinestheme.com/icon-font-shortcode?utm_source=pagelines&utm_medium=plugin&utm_content=plugindescription&utm_campaign=icon_font_shortcode_plugin" target="_blank">Documentation</a> for examples and details.
 Version: 1.1.20130320
 Author: Clifford Paulick
 Author URI: http://tourkick.com/?utm_source=pagelines&utm_medium=plugin&utm_content=authoruri&utm_campaign=icon_font_shortcode_plugin
