@@ -1,7 +1,5 @@
 == Description ==
 
-<strong>LAUNCH SALE!</strong> <span style="color:#b94a48;">40% off during the month of March!</span> After March, price will be $9.99.
-
 Allows you to use a shortcode instead of HTML code to output an icon font, specifically for Font Awesome. Example usage: [i]icon-bolt icon-border[/i]
 
 Requires both opening <strong>[i]</strong> and closing <strong>[/i]</strong>, just like most WordPress shortcodes.
