@@ -3,8 +3,8 @@
 Plugin Name: Icon Font Shortcode
 Plugin URI: http://www.pagelinestheme.com/icon-font-shortcode?utm_source=pagelines&utm_medium=plugin&utm_content=pluginuri&utm_campaign=icon_font_shortcode_plugin
 Description: A PageLines plugin that lets you use a shortcode instead of HTML code to output an icon font, specifically for Font Awesome. See <a href="http://www.pagelinestheme.com/icon-font-shortcode?utm_source=pagelines&utm_medium=plugin&utm_content=plugindescription&utm_campaign=icon_font_shortcode_plugin" target="_blank">Documentation</a> for examples and details.
-Version: 1.1.20130320
-Author: Clifford Paulick
+Version: 1.1.20130902
+Author: TourKick (Clifford P)
 Author URI: http://tourkick.com/?utm_source=pagelines&utm_medium=plugin&utm_content=authoruri&utm_campaign=icon_font_shortcode_plugin
 Pagelines: true
 Tags: extension
@@ -63,7 +63,7 @@ class PL_Icon_Font_Shortcode {
 
 
 
-// Get settings from PageLines Site Options
+// Get settings from PageLines Site Options (v2, not DMS)
 if( ploption('ifs_id') && !empty($id) ) {
 	 $id = ploption('ifs_id') . ' ' . $id; // add a space
 	} else {
@@ -169,7 +169,7 @@ if(empty($thelink)) {
 
 
 
-	// Add PageLines settings
+	// Add PageLines settings (v2, not DMS)
 	function admin_page() {
 		if ( ! function_exists( 'ploption' ) )
 			return;

@@ -1,9 +1,4 @@
-/*
-http://demo.pagelines.me/theming/
-http://phpxref.pagelines.com/less/icons.less.source.html
-http://phpxref.pagelines.com/less/mixins.less.source.html
-http://phpxref.pagelines.com/includes/less.functions.php.source.html
-*/
+// http://www.pagelinestheme.com/less-color-variables-demo/
 
 
 
@@ -25,11 +20,7 @@ span.iconfontshortcodeerrormessage {
 
 
 
-/*
-*
-* Links --> coloring for both a and a:hover get overridden by shortcode's color attribute, if used. User could choose to override with child theme or Custom Code if desired.
-*
-*/
+// Links --> coloring for both a and a:hover get overridden by shortcode's color attribute, if used. User could choose to override with child theme or Custom Code if desired.
 a.iconfont,
 a.iconfont:link,
 a.iconfont:visited {
@@ -41,11 +32,7 @@ a.iconfont:hover {
 	text-decoration: none;
 }
 
-/*
-*
-* LESS colors -> not supported by 'color' shortcode attribute
-*
-*/
+// LESS colors -> not supported by 'color' shortcode attribute
 i.inverse {
 	color: @pl-base;
 	background: @pl-text;
@@ -59,18 +46,14 @@ i.lightbase,
 i.light-base {
 	color: @light-base;
 	}
-/* could add more */
+// could add more
 
 
 
-/*
-*
-* opacity
-*
-*/
+// opacity
 i.op0,
 i.opnone {
-	.opacity(0); /* could also use color="transparent" within the shortcode */
+	.opacity(0); // could also use color="transparent" within the shortcode
 	}
 i.op25,
 i.opsome {
@@ -85,15 +68,11 @@ i.opmost {
 	.opacity(75);
 	}
 
-/*
-*
-* backgrounds
-*
-*/
+// backgrounds
 
 
-/* Rounded corners */
-/* NEEDS to be used in conjuction with another background property. */
+// Rounded corners
+// NEEDS to be used in conjuction with another background property.
 i.rounded,
 i.bgrounded {
 	.border-radius(.1em);
@@ -144,18 +123,16 @@ i.bgrounded50px {
 
 
 
-/* Oval */
+// Oval
 i.oval,
 i.bgoval {
 	.border-radius(100%);
 	}
 
 
-/* Circles */
-/*
-*	NEEDS to be used in conjuction with another background property, otherwise just effectively adds a bit of padding due to the em > 1
-*	Works best for non-odd-shaped (icon-money does not look good)
-*/
+// Circles
+// NEEDS to be used in conjuction with another background property, otherwise just effectively adds a bit of padding due to the em > 1
+// Works best for non-odd-shaped (icon-money does not look good)
 i.circle,
 i.circle1half,
 i.bgcircle1half,
@@ -428,7 +405,7 @@ i.bgcircle500px {
 	}
 
 
-/* Colors */
+// Colors
 i.bgblack {
 	background: rgb(0,0,0);
 	}
@@ -483,25 +460,25 @@ i.bgyellowgreen {
 
 
 
-/* Bootstrap's */
+// Bootstrap's
 i.bghighlight,
 i.highlight {
 	.highlightMe();
 	}
 
 
-/* could add some of the relative color references */
+// could add some of the relative color references
 
 
 
-/* Custom */
+// Custom
 @firered: #FF1A0A;
 @fireorange: #FF954F;
 i.bgfire {
 	background: @fireorange;
 	#gradient > .vertical(@fireorange,@firered);
 	}
-	/* red to orange gradient with orange fallback for old browsers */
+	// red to orange gradient with orange fallback for old browsers
 
 
 i.bgrainbow {
@@ -512,16 +489,12 @@ i.bgrainbow {
 	background: -webkit-linear-gradient(top, red 0%, orange 18%, yellow 33%, green 48%, blue 65%, indigo 80%, violet 100%);
 	background: linear-gradient(top, red 0%, orange 18%, yellow 33%, green 48%, blue 65%, indigo 80%, violet 100%);
 	}
-	/* from http://www.impressivewebs.com/css3-linear-gradient-syntax/ */
+	// from http://www.impressivewebs.com/css3-linear-gradient-syntax/
 
 
 
-/*
-*
-* shadows
-*
-*/
-/* text-shadow syntax --> text-shadow: h-shadow v-shadow blur color; */
+// shadows
+// text-shadow syntax --> text-shadow: h-shadow v-shadow blur color;
 i.textinset {
 	text-shadow: 0px -1px 0px @baseContrastMore;
 	}
@@ -565,28 +538,23 @@ i.textshadowdarkhuge {
 	}
 
 
-/*
-*
-* outlining --> see http://www.paulund.co.uk/css-text-stroke with demo at http://www.paulund.co.uk/playground/demo/css-properties/text-stroke.php
-* notice: only works on webkit browsers
-*
-*/
+// outlining --> see http://www.paulund.co.uk/css-text-stroke with demo at http://www.paulund.co.uk/playground/demo/css-properties/text-stroke.php
+// notice: only works on webkit browsers
 i.outline,
 i.outline1,
 i.outlineone {
-	/* for non-webkit -- limited to only 1px per http://css-tricks.com/adding-stroke-to-web-text/ */
+	// for non-webkit -- limited to only 1px per http://css-tricks.com/adding-stroke-to-web-text/
 	color: @pl-base;
 	text-shadow:
 		-1px -1px 0 @pl-text,
 		1px -1px 0 @pl-text,
 		-1px 1px 0 @pl-text,
 		1px 1px 0 @pl-text;
-	/* rest is for webkit only */
-/*
-If I use these, it doubles the effect.
-	-webkit-text-fill-color: @pl-base;
-	-webkit-text-stroke: 1px @pl-text;
-*/
+	// rest is for webkit only
+
+// If I use these, it doubles the effect.
+//	-webkit-text-fill-color: @pl-base;
+//	-webkit-text-stroke: 1px @pl-text;
 	}
 i.outline2,
 i.outlinetwo {
@@ -636,13 +604,10 @@ i.outlineten {
 
 
 
-/*
-*
-* rotate --> inspired by http://codepen.io/chriscoyier/pen/BkhFI (linked to from http://css-tricks.com/transitions-and-animations-on-css-generated-content/ )
-* At this time, Chrome suffers from aliasing (reported bug, http://stackoverflow.com/questions/6492027/css-transform-jagged-edges-in-chrome ).
-*/
+// rotate --> inspired by http://codepen.io/chriscoyier/pen/BkhFI (linked to from http://css-tricks.com/transitions-and-animations-on-css-generated-content/ )
+// At this time, Chrome suffers from aliasing (reported bug, http://stackoverflow.com/questions/6492027/css-transform-jagged-edges-in-chrome ).
 
-/* increments of 30 degrees, with positive and negative options */
+// increments of 30 degrees, with positive and negative options
 i.rotate:before,
 i.rotate30:before,
 i.rotate-330:before {
@@ -689,7 +654,7 @@ i.rotate-30:before {
 	.rotate(330deg);
 	}
 
-/* increments of 45 degrees, non-overlapping with the 30's above */
+// increments of 45 degrees, non-overlapping with the 30's above
 
 i.rotate45:before,
 i.rotate-315:before {
@@ -706,4 +671,17 @@ i.rotate-135:before {
 i.rotate315:before,
 i.rotate-45:before {
 	.rotate(315deg);
+	}
+
+
+// flip over y-axis (for x-axis flip, use 'rotate180')
+// icons like 'icon-search' could also use 'rotate90' to get the same look, but icons like 'icon-pagelines' could not
+// http://css-tricks.com/snippets/css/flip-an-image/
+i.flip:before {
+	-moz-transform: scaleX(-1);
+	-o-transform: scaleX(-1);
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
+	filter: FlipH;
+	-ms-filter: "FlipH";
 	}

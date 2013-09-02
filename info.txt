@@ -18,6 +18,10 @@ With this shortcode plugin, you can maximize your usage of icon fonts, which are
 See <a href="http://www.pagelinestheme.com/icon-font-shortcode?utm_source=pagelines&utm_medium=plugin&utm_content=plstoredescription&utm_campaign=icon_font_shortcode_plugin" target="_blank">Plugin's Official Page</a> for examples, FAQs, and all the details.
 
 == Changelog ==
+= 1.1.20130902 =
+* Added y-axis 'flip' styling (for x-axis flip, use 'rotate180')
+* Code comments updated
+* Shortcodes work on both Pagelines Framework (v2) and PageLines DMS (v3), but v2 has extra options in the Site Options area in wp-admin.
 = 1.1.20130320 =
 * Fixed some typos in documentation, no code changes
 = 1.0.20130309 =
