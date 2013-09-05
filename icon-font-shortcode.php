@@ -6,10 +6,11 @@ Description: A PageLines plugin that lets you use a shortcode instead of HTML co
 Version: 1.1.20130902
 Author: TourKick (Clifford P)
 Author URI: http://tourkick.com/?utm_source=pagelines&utm_medium=plugin&utm_content=authoruri&utm_campaign=icon_font_shortcode_plugin
-Pagelines: true
-Tags: extension
 Demo: http://www.pagelinestheme.com/icon-font-shortcode#demo?utm_source=pagelines&utm_medium=plugin&utm_content=plugindemo&utm_campaign=icon_font_shortcode_plugin
 External: http://tourkick.com/?utm_source=pagelines&utm_medium=plugin&utm_content=externallink&utm_campaign=icon_font_shortcode_plugin
+PageLines: true
+v3: true
+Tags: extension
 */
 
 // Check Framework
