@@ -3,12 +3,12 @@
 Plugin Name: Icon Font Shortcode
 Plugin URI: http://www.pagelinestheme.com/icon-font-shortcode?utm_source=pagelines&utm_medium=plugin&utm_content=pluginuri&utm_campaign=icon_font_shortcode_plugin
 Description: A PageLines plugin that lets you use a shortcode instead of HTML code to output an icon font, specifically for Font Awesome. See <a href="http://www.pagelinestheme.com/icon-font-shortcode?utm_source=pagelines&utm_medium=plugin&utm_content=plugindescription&utm_campaign=icon_font_shortcode_plugin" target="_blank">Documentation</a> for examples and details.
-Version: 1.1.20130902
+Version: 1.2
 Author: TourKick (Clifford P)
 Author URI: http://tourkick.com/?utm_source=pagelines&utm_medium=plugin&utm_content=authoruri&utm_campaign=icon_font_shortcode_plugin
 Demo: http://www.pagelinestheme.com/icon-font-shortcode#demo?utm_source=pagelines&utm_medium=plugin&utm_content=plugindemo&utm_campaign=icon_font_shortcode_plugin
 External: http://tourkick.com/?utm_source=pagelines&utm_medium=plugin&utm_content=externallink&utm_campaign=icon_font_shortcode_plugin
-PageLines: true
+Pagelines: true
 v3: true
 Tags: extension
 */
@@ -16,8 +16,12 @@ Tags: extension
 // Check Framework
 add_action('pagelines_setup', 'ifs_init' );
 function ifs_init() {
-    if( !function_exists('ploption') ) {
-        return;
+    if( function_exists('ploption') && !function_exists('pl_has_editor') ) {
+    	$plversion = 'framework';
+    } elseif ( function_exists('pl_has_editor') && pl_has_editor() ) {
+	    $plversion = 'dms';
+    } else {
+    	return;
     }
 }
 
@@ -63,18 +67,33 @@ class PL_Icon_Font_Shortcode {
 	*/
 
 
+if( function_exists('ploption') && !function_exists('pl_has_editor') ) {
+	$plversion = 'framework';
+} elseif ( function_exists('pl_has_editor') && pl_has_editor() ) {
+    $plversion = 'dms';
+} else {
+	return;
+}
+
+
 
 // Get settings from PageLines Site Options (v2, not DMS)
-if( ploption('ifs_id') && !empty($id) ) {
-	 $id = ploption('ifs_id') . ' ' . $id; // add a space
-	} else {
-	 $id = ploption('ifs_id');
-	}
-if( ploption('ifs_class') ) {
-	$class = ploption('ifs_class') . ' ' . $class; // add a space
-	}
-$linkclass = (ploption('ifs_linkclass')) ? ploption('ifs_linkclass') : 'iconfont'; // no 'if' because if it is blank, we just set a default
+if($plversion == 'framework') {
+	if( ploption('ifs_id') && !empty($id) ) {
+		 $id = ploption('ifs_id') . ' ' . $id; // add a space
+		} else {
+		 $id = ploption('ifs_id');
+		}
+	if( ploption('ifs_class') ) {
+		$class = ploption('ifs_class') . ' ' . $class; // add a space
+		}
+	$linkclass = (ploption('ifs_linkclass')) ? ploption('ifs_linkclass') : 'iconfont'; // no 'if' because if it is blank, we just set a default
+}
 
+//make sure $linkclass is defined for DMS
+if($plversion == 'dms') {
+	$linkclass = 'iconfont';
+}
 
 
 	// sanitization reference: http://wp.tutsplus.com/tutorials/creative-coding/data-sanitization-and-validation-with-wordpress/
@@ -170,10 +189,17 @@ if(empty($thelink)) {
 
 
 
-	// Add PageLines settings (v2, not DMS)
-	function admin_page() {
-		if ( ! function_exists( 'ploption' ) )
-			return;
+// Add PageLines settings (v2, not DMS)
+function admin_page() {
+    if( function_exists('ploption') && !function_exists('pl_has_editor') ) {
+    	$plversion = 'framework';
+    } elseif ( function_exists('pl_has_editor') && pl_has_editor() ) {
+	    $plversion = 'dms';
+    } else {
+    	return;
+    }
+
+	if ( $plversion == 'framework' ) {
 		$option_args = array(
 			'name'		=> 'icon_font_shortcode', // no spaces allowed
 			'title'		=> 'Icon Font Shortcode', // name of admin page title
@@ -183,6 +209,7 @@ if(empty($thelink)) {
 		);
 		pl_add_options_page( $option_args );
 	}
+}
 
 	// PageLines Site Options settings ( see http://phpxref.pagelines.com/admin/class.options.engine.php.source.html around Line 26 for settings )
 	function options_array(){
