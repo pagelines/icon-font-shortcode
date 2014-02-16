@@ -3,7 +3,7 @@
 Plugin Name: Icon Font Shortcode
 Plugin URI: http://www.pagelinestheme.com/icon-font-shortcode?utm_source=pagelines&utm_medium=plugin&utm_content=pluginuri&utm_campaign=icon_font_shortcode_plugin
 Description: A PageLines plugin that lets you use a shortcode instead of HTML code to output an icon font, specifically for Font Awesome. See <a href="http://www.pagelinestheme.com/icon-font-shortcode?utm_source=pagelines&utm_medium=plugin&utm_content=plugindescription&utm_campaign=icon_font_shortcode_plugin" target="_blank">Documentation</a> for examples and details.
-Version: 1.2
+Version: 1.2.1
 Author: TourKick (Clifford P)
 Author URI: http://tourkick.com/?utm_source=pagelines&utm_medium=plugin&utm_content=authoruri&utm_campaign=icon_font_shortcode_plugin
 Demo: http://www.pagelinestheme.com/icon-font-shortcode#demo?utm_source=pagelines&utm_medium=plugin&utm_content=plugindemo&utm_campaign=icon_font_shortcode_plugin
@@ -136,9 +136,9 @@ if(empty($thelink)) {
 
 	// $x
 	if(!empty($theid)){
-		$x = 'id="' . $theid . '" class="' . $theclass . '"';
+		$x = 'id="' . $theid . '" class="icon ' . $theclass . '"';
 	} else {
-		$x = 'class="' . $theclass . '"';
+		$x = 'class="icon ' . $theclass . '"';
 	}
 
 
@@ -156,9 +156,9 @@ if(empty($thelink)) {
 
 	// $z
 	if(empty($linkcodebefore)){
-		$z = '<i ' .$x . $y . ' aria-hidden="true"></i>';
+		$z = '<i ' .$x . $y . '></i>';
 	} else {
-		$z = $linkcodebefore . '<i ' .$x . $y . ' aria-hidden="true"></i>' . $linkcodeafter;
+		$z = $linkcodebefore . '<i ' .$x . $y . '></i>' . $linkcodeafter;
 	}
 	// aria-hidden="true"
 	/* References:

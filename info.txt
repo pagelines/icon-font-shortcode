@@ -18,6 +18,12 @@ With this shortcode plugin, you can maximize your usage of icon fonts, which are
 See <a href="http://www.pagelinestheme.com/icon-font-shortcode?utm_source=pagelines&utm_medium=plugin&utm_content=plstoredescription&utm_campaign=icon_font_shortcode_plugin" target="_blank">Plugin's Official Page</a> for examples, FAQs, and all the details.
 
 == Changelog ==
+= 1.2.1 =
+* Updated for DMS v1.2 (i class="icon icon-_____" instead of i class="icon-_____")
+* Confirmed to work on Framework, DMS prior to v1.2, and beta version of DMS v1.2
+= 1.2 =
+* Better version checking for Framework vs DMS (removes DMS deprecated WP_DEBUG notices for ploption)
+== Changelog ==
 = 1.1.20130902 =
 * Added y-axis 'flip' styling (for x-axis flip, use 'rotate180')
 * Code comments updated
