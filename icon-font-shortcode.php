@@ -3,7 +3,7 @@
 Plugin Name: Icon Font Shortcode
 Plugin URI: http://www.pagelinestheme.com/icon-font-shortcode?utm_source=pagelines&utm_medium=plugin&utm_content=pluginuri&utm_campaign=icon_font_shortcode_plugin
 Description: A PageLines plugin that lets you use a shortcode instead of HTML code to output an icon font, specifically for Font Awesome. See <a href="http://www.pagelinestheme.com/icon-font-shortcode?utm_source=pagelines&utm_medium=plugin&utm_content=plugindescription&utm_campaign=icon_font_shortcode_plugin" target="_blank">Documentation</a> for examples and details.
-Version: 1.2.1
+Version: 1.2.2
 Author: TourKick (Clifford P)
 Author URI: http://tourkick.com/?utm_source=pagelines&utm_medium=plugin&utm_content=authoruri&utm_campaign=icon_font_shortcode_plugin
 Demo: http://www.pagelinestheme.com/icon-font-shortcode#demo?utm_source=pagelines&utm_medium=plugin&utm_content=plugindemo&utm_campaign=icon_font_shortcode_plugin
@@ -111,8 +111,23 @@ if($plversion == 'dms') {
 
 // Display an error message if the shortcode is used but no icon is specified (because then it just spits out an empty <i></i>, if anything at all.
 // Does not protect from using the shortcode without closing the shortcode.
-if ( stripos($theclass, "icon-") === false ) {
-	if ( !current_user_can('edit_posts') /* && !current_user_can('edit_pages') */ ) {
+$noicon = true;
+$iconhyphen = false;
+$fahyphen = false;
+if ( stripos($theclass, "icon-") !== false ) {
+	$noicon = false;
+	$iconhyphen = true;
+	$theclass = 'icon '.$theclass;
+}
+if ( $noicon === true
+ && stripos($theclass, "fa-") !== false ) {
+	$noicon = false;
+	$fahyphen = true;
+	$theclass = 'fa '.$theclass;
+}
+
+if ( $noicon === true ) {
+	if ( !current_user_can('edit_posts') ) {
 		return;
 	} else {
 		$errormessage = '<span class="iconfontshortcodeerrormessage">Icon Font Shortcode used without specifying an icon. (message only shown to Contributors and higher)</span>';
@@ -136,9 +151,9 @@ if(empty($thelink)) {
 
 	// $x
 	if(!empty($theid)){
-		$x = 'id="' . $theid . '" class="icon ' . $theclass . '"';
+		$x = 'id="' . $theid . '" class="' . $theclass . '"';
 	} else {
-		$x = 'class="icon ' . $theclass . '"';
+		$x = 'class="' . $theclass . '"';
 	}
 
 
