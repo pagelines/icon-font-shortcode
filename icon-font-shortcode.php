@@ -3,7 +3,7 @@
 Plugin Name: Icon Font Shortcode
 Plugin URI: http://www.pagelinestheme.com/icon-font-shortcode?utm_source=pagelines&utm_medium=plugin&utm_content=pluginuri&utm_campaign=icon_font_shortcode_plugin
 Description: A PageLines plugin that lets you use a shortcode instead of HTML code to output an icon font, specifically for Font Awesome. See <a href="http://www.pagelinestheme.com/icon-font-shortcode?utm_source=pagelines&utm_medium=plugin&utm_content=plugindescription&utm_campaign=icon_font_shortcode_plugin" target="_blank">Documentation</a> for examples and details.
-Version: 1.2.2
+Version: 1.2.3
 Author: TourKick (Clifford P)
 Author URI: http://tourkick.com/?utm_source=pagelines&utm_medium=plugin&utm_content=authoruri&utm_campaign=icon_font_shortcode_plugin
 Demo: http://www.pagelinestheme.com/icon-font-shortcode#demo?utm_source=pagelines&utm_medium=plugin&utm_content=plugindemo&utm_campaign=icon_font_shortcode_plugin
@@ -32,9 +32,9 @@ class PL_Icon_Font_Shortcode {
 		$this->base_url = plugins_url( '', __FILE__ );
 		$this->icon		= plugins_url( '/icon.png', __FILE__ );
 		$this->less		= $this->base_dir . '/icon-font-shortcode.less';
-		add_filter( 'pagelines_lesscode', array( &$this, 'get_less' ), 10, 1 );
-		add_action( 'admin_init', array( &$this, 'admin_page' ) );
-		add_action( 'init', array( &$this, 'add_shortcode' ) );
+		add_filter( 'pagelines_lesscode', array( $this, 'get_less' ), 10, 1 );
+		add_action( 'admin_init', array( $this, 'admin_page' ) );
+		add_action( 'init', array( $this, 'add_shortcode' ) );
 	}
 
 	function get_less( $less ){
@@ -43,7 +43,7 @@ class PL_Icon_Font_Shortcode {
 	}
 
 	function add_shortcode() {
-		add_shortcode( 'i', array( &$this, 'iconfontshortcode' ) );
+		add_shortcode( 'i', array( $this, 'iconfontshortcode' ) );
 	}
 
 	function iconfontshortcode($atts, $class = ''){ //start of shortcode
